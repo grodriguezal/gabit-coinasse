@@ -100,7 +100,7 @@ const showAnalyticsConsent = () => {
   banner.innerHTML = `
     <div style="display:flex;gap:14px;align-items:center;justify-content:space-between;flex-wrap:wrap">
       <p style="margin:0;max-width:520px;line-height:1.4;font-size:.92em">
-        Uso analítica para entender qué contenidos funcionan y mejorar Gabit. Si rechazas, no se guardan cookies de Analytics.
+        Uso analítica para entender qué contenidos funcionan mejor y mejorar la web. Si rechazas, no se guardan cookies de Analytics.
       </p>
       <div style="display:flex;gap:8px;flex-wrap:wrap">
         <button type="button" data-analytics-reject style="padding:9px 12px;border:1px solid #fff;background:transparent;color:#fff;cursor:pointer;font:inherit">RECHAZAR</button>
