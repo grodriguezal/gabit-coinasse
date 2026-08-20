@@ -25,6 +25,10 @@ jobs:
       - uses: actions/configure-pages@v5
         with:
           enablement: true
+      - name: Normalizar URLs canónicas
+        run: |
+          find . -type f -name '*.html' -not -path './.git/*' -print0 | \
+            xargs -0 sed -i 's#https://grodriguezal.github.io/gabit-coinasse#https://gabitcoinasse.com#g'
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
