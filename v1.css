@@ -9,6 +9,9 @@
 .rabbit-list small{display:block;margin-top:auto;font:600 9px "IBM Plex Mono",monospace}
 .menu-open{overflow:hidden}
 .latest-grid>*{min-width:0}.feature-card>*{min-width:0}.feature-card img{max-width:100%}
+.feature-card h3,.story-list h3{max-width:100%;overflow-wrap:anywhere;word-break:normal}
+.feature-card h3{line-height:.94}
+.story-list h3{line-height:1.08}
 .hub-grid{border:0;gap:0}
 .hub-grid>a{border:1px solid var(--ink);margin:0 -1px -1px 0}
 .route-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin:0 0 48px}
