@@ -1,3 +1,3 @@
 User-agent: *
 Allow: /
-Sitemap: https://grodriguezal.github.io/gabit-coinasse/sitemap.xml
+Sitemap: https://gabitcoinasse.com/sitemap.xml
