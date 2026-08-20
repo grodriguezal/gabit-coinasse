@@ -3,6 +3,7 @@ from __future__ import annotations
 import html
 import os
 import re
+import subprocess
 import sys
 import unicodedata
 from pathlib import Path
@@ -348,4 +349,5 @@ all_cards = "".join(f'<a href="../{a["slug"]}/"><span>{a["number"]} · {html.esc
 (ROOT / "articulos").mkdir(exist_ok=True)
 (ROOT / "articulos" / "index.html").write_text(f'''<!doctype html><html lang="es"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Todos los artículos — Gabit Coinasse</title><link rel="stylesheet" href="../styles.css"><link rel="stylesheet" href="../content.css"></head><body>{nav('../')}<main class="hub-page"><header><p class="eyebrow">V0 · CONTENIDO FUNDACIONAL</p><h1>TODO EMPIEZA CON UNA PREGUNTA.</h1><p>Doce piezas para entender el dinero, el crédito, el poder y las reglas del sistema.</p></header><div class="hub-grid">{all_cards}</div></main>{footer('../')}</body></html>''', encoding="utf-8")
 
-print(f"Generated {len(articles)} articles, {len(explainers)} explainers and {len(hub_copy)+2} indexes")
+subprocess.run([sys.executable, str(ROOT / "tools" / "upgrade_v1.py")], check=True)
+print(f"Generated and upgraded {len(articles)} articles, {len(explainers)} explainers and {len(hub_copy)+2} indexes to V1")
