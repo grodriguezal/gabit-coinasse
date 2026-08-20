@@ -1,0 +1,86 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1500" viewBox="0 0 1200 1500" role="img" aria-labelledby="title desc">
+<title id="title">Una deuda, muchos balances</title>
+<desc id="desc">Un bono soberano pasa visualmente del Estado a distintos balances: banco, fondo, hogar, inversor extranjero y banco central.</desc>
+<defs>
+  <pattern id="grain" width="24" height="24" patternUnits="userSpaceOnUse">
+    <circle cx="3" cy="5" r="1.1" fill="#111111" opacity=".10"/>
+    <circle cx="17" cy="13" r=".8" fill="#111111" opacity=".08"/>
+    <circle cx="8" cy="20" r=".7" fill="#111111" opacity=".07"/>
+  </pattern>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8.2" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+    <path d="M0 0 L10 5 L0 10 z" fill="#111111"/>
+  </marker>
+</defs>
+<rect width="1200" height="1500" fill="#F4F0E7"/>
+<rect width="1200" height="1500" fill="url(#grain)"/>
+<path d="M56 88H170 M56 88V202 M1030 1412h114 M1144 1298v114" fill="none" stroke="#111111" stroke-width="5"/>
+<g transform="translate(90 130) rotate(-2 190 170)">
+  <polygon points="40,82 190,20 340,82" fill="#111111"/>
+  <rect x="66" y="88" width="248" height="210" fill="#111111"/>
+  <rect x="94" y="112" width="30" height="150" fill="#F4F0E7"/>
+  <rect x="149" y="112" width="30" height="150" fill="#F4F0E7"/>
+  <rect x="204" y="112" width="30" height="150" fill="#F4F0E7"/>
+  <rect x="259" y="112" width="30" height="150" fill="#F4F0E7"/>
+  <rect x="42" y="300" width="300" height="24" fill="#111111"/>
+  <text x="190" y="368" text-anchor="middle" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="34" font-weight="800" letter-spacing="4">ESTADO</text>
+</g>
+<path d="M380 340 C535 285 720 308 829 404 C912 478 919 593 834 654 C722 733 515 718 403 641 C307 575 291 439 380 340Z" fill="#FFD400"/>
+<path d="M359 367 C491 301 736 310 850 414" fill="none" stroke="#111111" stroke-width="7" stroke-linecap="round"/>
+<g transform="translate(360 365) rotate(3 250 175)">
+  <polygon points="16,25 59,12 94,28 130,12 171,27 210,12 249,27 292,13 333,29 374,13 416,28 458,12 495,27 498,323 461,339 421,323 379,340 337,324 296,340 255,324 213,340 172,324 132,340 91,324 51,339 15,322" fill="#F4F0E7" stroke="#111111" stroke-width="7"/>
+  <text x="255" y="92" text-anchor="middle" font-family="Arial, Helvetica, sans-serif" font-size="30" font-weight="800" letter-spacing="5" fill="#111111">DEUDA PÚBLICA</text>
+  <line x1="67" y1="120" x2="443" y2="120" stroke="#111111" stroke-width="5"/>
+  <text x="255" y="213" text-anchor="middle" font-family="Arial Narrow, Arial, Helvetica, sans-serif" font-size="106" font-weight="900" fill="#111111">1.000</text>
+  <text x="255" y="268" text-anchor="middle" font-family="Courier New, monospace" font-size="24" font-weight="700" fill="#111111">PROMESA DE PAGO</text>
+  <circle cx="426" cy="75" r="34" fill="none" stroke="#111111" stroke-width="5"/>
+  <path d="M409 75l11 11 23-28" fill="none" stroke="#111111" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<path d="M690 730 C730 812 859 818 900 875" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M545 735 C483 813 349 817 310 884" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M622 742 C623 845 620 940 618 1010" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M753 700 C846 733 1002 696 1032 624" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+<path d="M492 700 C397 740 240 696 208 625" fill="none" stroke="#111111" stroke-width="6" stroke-linecap="round" marker-end="url(#arrow)"/>
+<g transform="translate(64 490) rotate(-5 160 100)">
+  <polygon points="0,15 38,0 67,11 102,0 135,13 170,0 208,12 243,0 282,14 304,5 304,196 0,196" fill="#111111"/>
+  <text x="26" y="70" fill="#F4F0E7" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="900">BANCO</text>
+  <text x="26" y="112" fill="#F4F0E7" font-family="Courier New, monospace" font-size="19">ACTIVO</text>
+  <line x1="25" y1="134" x2="268" y2="134" stroke="#F4F0E7" stroke-width="3"/>
+  <line x1="25" y1="158" x2="222" y2="158" stroke="#F4F0E7" stroke-width="3"/>
+</g>
+<g transform="translate(832 485) rotate(5 160 100)">
+  <polygon points="0,8 36,0 72,13 110,0 146,12 184,0 220,13 256,0 304,12 304,196 0,196" fill="#F4F0E7" stroke="#111111" stroke-width="6"/>
+  <text x="28" y="72" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="33" font-weight="900">FONDO</text>
+  <text x="28" y="112" fill="#111111" font-family="Courier New, monospace" font-size="19">CARTERA</text>
+  <line x1="27" y1="135" x2="270" y2="135" stroke="#111111" stroke-width="3"/>
+  <line x1="27" y1="159" x2="234" y2="159" stroke="#111111" stroke-width="3"/>
+</g>
+<g transform="translate(52 884) rotate(3 160 100)">
+  <polygon points="0,0 304,13 292,207 15,194" fill="#F4F0E7" stroke="#111111" stroke-width="6"/>
+  <path d="M58 117 L112 72 L166 117 V168 H58Z" fill="#111111"/>
+  <rect x="92" y="129" width="34" height="39" fill="#F4F0E7"/>
+  <text x="190" y="98" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="31" font-weight="900">HOGAR</text>
+  <text x="190" y="135" fill="#111111" font-family="Courier New, monospace" font-size="18">AHORRO</text>
+</g>
+<g transform="translate(844 878) rotate(-3 160 100)">
+  <polygon points="12,0 304,14 295,206 0,192" fill="#111111"/>
+  <circle cx="82" cy="104" r="49" fill="none" stroke="#F4F0E7" stroke-width="5"/>
+  <ellipse cx="82" cy="104" rx="23" ry="49" fill="none" stroke="#F4F0E7" stroke-width="4"/>
+  <line x1="34" y1="104" x2="130" y2="104" stroke="#F4F0E7" stroke-width="4"/>
+  <text x="155" y="89" fill="#F4F0E7" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="900">INVERSOR</text>
+  <text x="155" y="124" fill="#F4F0E7" font-family="Arial, Helvetica, sans-serif" font-size="27" font-weight="900">EXTRANJERO</text>
+</g>
+<g transform="translate(435 1030) rotate(-1 165 112)">
+  <polygon points="0,15 42,0 81,12 121,0 164,14 205,0 246,13 286,0 330,14 330,224 0,224" fill="#F4F0E7" stroke="#111111" stroke-width="6"/>
+  <polygon points="58,83 164,42 270,83" fill="#111111"/>
+  <rect x="76" y="88" width="176" height="78" fill="#111111"/>
+  <rect x="96" y="101" width="21" height="53" fill="#F4F0E7"/>
+  <rect x="132" y="101" width="21" height="53" fill="#F4F0E7"/>
+  <rect x="168" y="101" width="21" height="53" fill="#F4F0E7"/>
+  <rect x="204" y="101" width="21" height="53" fill="#F4F0E7"/>
+  <text x="165" y="202" text-anchor="middle" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="26" font-weight="900">BANCO CENTRAL</text>
+</g>
+<g transform="translate(116 1292) rotate(-2 480 55)">
+  <rect x="0" y="0" width="968" height="110" fill="#FFD400"/>
+  <text x="484" y="70" text-anchor="middle" fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="42" font-weight="900" letter-spacing="1">UNA PROMESA. MUCHOS BALANCES.</text>
+</g>
+</svg>
