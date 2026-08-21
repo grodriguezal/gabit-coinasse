@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" role="img" aria-labelledby="title desc">
+  <title id="title">Un eurodólar es una promesa bancaria en dólares</title>
+  <desc id="desc">Un banco en Londres registra un depósito en dólares como pasivo y, si el dinero sale, debe conseguir y liquidar dólares a través de la red bancaria.</desc>
+  <rect width="1400" height="800" fill="#F4F0E7"/>
+  <g stroke="#111111" stroke-width="4" fill="none" stroke-linecap="square" stroke-linejoin="miter">
+    <path d="M85 438 L245 372 L405 438 Z"/>
+    <rect x="108" y="438" width="274" height="222"/>
+    <path d="M145 478 V625 M200 478 V625 M255 478 V625 M310 478 V625" stroke-width="3"/>
+    <path d="M108 660 H382"/>
+    <path d="M430 535 H565"/>
+    <path d="M543 516 L565 535 L543 554"/>
+    <rect x="565" y="414" width="430" height="245"/>
+    <path d="M1028 535 H1165"/>
+    <path d="M1143 516 L1165 535 L1143 554"/>
+    <rect x="1165" y="450" width="170" height="170"/>
+    <circle cx="1250" cy="535" r="48"/>
+  </g>
+  <rect x="592" y="518" width="343" height="39" fill="#FFD400" transform="rotate(-1 592 518)"/>
+  <rect x="75" y="68" width="214" height="42" fill="#FFD400"/>
+  <g fill="#111111" font-family="Arial, Helvetica, sans-serif">
+    <text x="92" y="97" font-size="22" font-weight="700" letter-spacing="1">EURODÓLAR · 01</text>
+    <text x="78" y="205" font-size="76" font-weight="800">NO ES UN BILLETE</text>
+    <text x="80" y="275" font-size="35">Es una promesa bancaria denominada en dólares.</text>
+    <text x="126" y="706" font-size="24" font-weight="700">BANCO · LONDRES</text>
+    <text x="596" y="463" font-size="30" font-weight="700">DEPÓSITO EN DÓLARES</text>
+    <text x="596" y="505" font-size="25">Cliente</text>
+    <text x="786" y="505" font-size="25" font-weight="700">+$1.000.000</text>
+    <text x="596" y="548" font-size="25">Banco</text>
+    <text x="786" y="548" font-size="25" font-weight="700">TE DEBE $1.000.000</text>
+    <text x="596" y="600" font-size="22">Para ti: dinero.</text>
+    <text x="596" y="630" font-size="22">Para el banco: pasivo.</text>
+    <text x="1195" y="520" font-size="54" font-weight="800">$</text>
+    <text x="1191" y="576" font-size="18" font-weight="700">LIQUIDAR</text>
+    <text x="80" y="757" font-size="29" font-style="italic">Si sale del banco, la promesa tiene que convertirse en pago.</text>
+  </g>
+  <path d="M82 770 C340 746 535 776 780 758" stroke="#111111" stroke-width="2.5" fill="none"/>
+</svg>
