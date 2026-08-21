@@ -1,96 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1280" role="img" aria-labelledby="title desc">
-<title id="title">Collage editorial sobre el eurodólar y la banca offshore</title>
-<desc id="desc">Collage monocromo sobre papel hueso con un banco, un fragmento de billete en dólares, un puerto, un libro contable y una red internacional conectada con una intervención amarilla.</desc>
-<defs>
-  <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
-    <feTurbulence type="fractalNoise" baseFrequency="0.8" numOctaves="3" seed="17" result="noise"/>
-    <feColorMatrix in="noise" type="saturate" values="0" result="mono"/>
-    <feComponentTransfer in="mono" result="fade"><feFuncA type="table" tableValues="0 0.08"/></feComponentTransfer>
-    <feBlend in="SourceGraphic" in2="fade" mode="multiply"/>
-  </filter>
-  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="8" dy="10" stdDeviation="5" flood-color="#111111" flood-opacity="0.18"/></filter>
-  <clipPath id="tearA"><path d="M0 18 L30 7 75 14 118 5 161 15 206 10 250 22 295 10 335 16 360 8 384 18 384 402 350 391 314 399 270 388 229 397 180 390 132 399 88 389 45 398 0 389Z"/></clipPath>
-  <clipPath id="tearB"><path d="M0 10 L44 3 92 11 138 4 184 14 224 5 270 13 314 8 360 16 402 6 432 12 432 250 394 241 355 247 318 239 276 250 231 241 190 247 151 239 108 249 61 241 0 247Z"/></clipPath>
-  <clipPath id="tearC"><path d="M0 18 L38 8 82 14 122 5 160 17 205 8 248 16 286 9 332 18 368 7 408 17 408 315 372 307 332 314 286 304 243 313 198 304 157 312 113 305 68 314 29 306 0 311Z"/></clipPath>
-</defs>
-<rect width="1024" height="1280" fill="#F4F0E7"/>
-<rect x="56" y="54" width="912" height="1138" fill="none" stroke="#111111" stroke-width="3"/>
-<g filter="url(#grain)">
-  <g transform="translate(105 150) rotate(-2 190 200)" filter="url(#shadow)" clip-path="url(#tearA)">
-    <rect width="384" height="402" fill="#E8E3D9"/>
-    <rect x="40" y="42" width="306" height="318" fill="#D6D0C4"/>
-    <circle cx="194" cy="195" r="112" fill="#B6B0A6" stroke="#111111" stroke-width="4"/>
-    <circle cx="194" cy="195" r="92" fill="none" stroke="#111111" stroke-width="2" stroke-dasharray="5 8"/>
-    <path d="M194 117 V276 M145 196 H243" stroke="#111111" stroke-width="9"/>
-    <path d="M148 132 C170 107 218 108 239 136 M148 258 C176 282 214 281 239 255" fill="none" stroke="#111111" stroke-width="3"/>
-    <g fill="#777168">
-      <circle cx="130" cy="150" r="11"/><circle cx="258" cy="150" r="11"/><circle cx="126" cy="235" r="11"/><circle cx="262" cy="235" r="11"/><circle cx="194" cy="104" r="10"/><circle cx="194" cy="286" r="10"/>
-    </g>
-  </g>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+  <title id="title">El dólar offshore como red de promesas bancarias</title>
+  <desc id="desc">Collage editorial realista en blanco y negro con archivo monetario, rutas internacionales, documentos bancarios y un libro contable conectados por una intervención amarilla.</desc>
+  <defs>
+    <filter id="mono"><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncR type="linear" slope="1.08" intercept="-0.03"/><feFuncG type="linear" slope="1.08" intercept="-0.03"/><feFuncB type="linear" slope="1.08" intercept="-0.03"/></feComponentTransfer></filter>
+    <filter id="grain"><feTurbulence type="fractalNoise" baseFrequency="0.75" numOctaves="2" seed="18" result="n"/><feColorMatrix in="n" type="saturate" values="0" result="g"/><feComponentTransfer in="g"><feFuncA type="table" tableValues="0 0.08"/></feComponentTransfer></filter>
+    <clipPath id="a"><path d="M42 66 L428 50 464 74 452 332 430 350 70 338 46 314Z"/></clipPath>
+    <clipPath id="b"><path d="M505 48 L1120 60 1148 91 1128 340 1104 357 530 348 496 320Z"/></clipPath>
+    <clipPath id="c"><path d="M56 384 L482 370 510 392 500 654 466 674 76 658 44 628Z"/></clipPath>
+    <clipPath id="d"><path d="M542 392 L1136 372 1162 399 1145 650 1110 674 564 660 530 630Z"/></clipPath>
+  </defs>
+  <rect width="1200" height="720" fill="#F4F0E7"/>
+  <rect x="18" y="18" width="1164" height="684" fill="none" stroke="#111111" stroke-width="2"/>
 
-  <g transform="translate(505 188)" filter="url(#shadow)" clip-path="url(#tearB)">
-    <rect width="432" height="250" fill="#EEE9E0"/>
-    <path d="M20 170 H410" stroke="#111111" stroke-width="2"/>
-    <g stroke="#111111" fill="none">
-      <path d="M165 153 L207 153 235 140 260 142 230 164 177 164Z" stroke-width="2"/>
-      <path d="M214 62 V153 M180 90 L214 62 252 88 M214 75 L178 118 M214 75 L255 119" stroke-width="1.5"/>
-      <path d="M267 48 V153 M235 82 L267 48 305 82 M267 67 L232 114 M267 67 L310 114" stroke-width="1.5"/>
-      <path d="M318 71 V153 M289 98 L318 71 347 98" stroke-width="1.5"/>
-    </g>
-    <g fill="#111111">
-      <circle cx="60" cy="152" r="6"/><rect x="58" y="156" width="4" height="20" transform="rotate(8 60 166)"/>
-      <circle cx="95" cy="152" r="6"/><rect x="93" y="156" width="4" height="20" transform="rotate(-5 95 166)"/>
-      <circle cx="355" cy="151" r="6"/><rect x="353" y="155" width="4" height="21" transform="rotate(6 355 165)"/>
-      <circle cx="385" cy="151" r="6"/><rect x="383" y="155" width="4" height="21" transform="rotate(-4 385 165)"/>
-    </g>
-  </g>
+  <g opacity="0.14" transform="translate(8 10)"><path d="M42 66 L428 50 464 74 452 332 430 350 70 338 46 314Z" fill="#111111"/><path d="M505 48 L1120 60 1148 91 1128 340 1104 357 530 348 496 320Z" fill="#111111"/><path d="M56 384 L482 370 510 392 500 654 466 674 76 658 44 628Z" fill="#111111"/><path d="M542 392 L1136 372 1162 399 1145 650 1110 674 564 660 530 630Z" fill="#111111"/></g>
 
-  <g opacity="0.58" transform="translate(472 410)">
-    <path d="M54 137 C95 95 132 104 165 93 192 84 219 99 250 86 280 74 316 85 347 108 375 129 402 138 430 151" fill="none" stroke="#777168" stroke-width="2"/>
-    <path d="M134 187 C166 155 197 151 229 160 259 168 276 193 304 197 M340 84 C365 66 394 65 422 80" fill="none" stroke="#777168" stroke-width="2"/>
-    <path d="M268 202 C290 214 309 237 313 266" fill="none" stroke="#777168" stroke-width="2"/>
-  </g>
+  <g clip-path="url(#a)" filter="url(#mono)"><image href="gold-monetary-network-collage.webp" x="20" y="35" width="490" height="340" preserveAspectRatio="xMidYMid slice"/></g>
+  <g clip-path="url(#b)" filter="url(#mono)"><image href="bond-future-payments-collage.webp" x="472" y="38" width="700" height="345" preserveAspectRatio="xMidYMid slice"/></g>
+  <g clip-path="url(#c)" filter="url(#mono)"><image href="bank-loan-deposit-ledger.webp" x="28" y="354" width="510" height="345" preserveAspectRatio="xMidYMid slice"/></g>
+  <g clip-path="url(#d)" filter="url(#mono)"><image href="gold-monetary-network-collage.webp" x="510" y="350" width="670" height="345" preserveAspectRatio="xMidYMid slice"/></g>
 
-  <g transform="translate(72 602) rotate(-1 204 157)" filter="url(#shadow)" clip-path="url(#tearC)">
-    <rect width="408" height="315" fill="#222222"/>
-    <g stroke="#E8E3D9" fill="none">
-      <path d="M205 82 V255" stroke-width="6"/>
-      <path d="M128 116 H284" stroke-width="6"/>
-      <path d="M150 116 L124 187 M262 116 L289 187" stroke-width="2"/>
-      <ellipse cx="117" cy="193" rx="41" ry="12" stroke-width="3"/><ellipse cx="296" cy="193" rx="41" ry="12" stroke-width="3"/>
-      <rect x="142" y="252" width="126" height="29" fill="#E8E3D9" stroke="#E8E3D9"/>
-    </g>
+  <g fill="#FFD400" stroke="#FFD400">
+    <circle cx="516" cy="355" r="25"/>
+    <circle cx="780" cy="180" r="6"/><circle cx="930" cy="238" r="6"/><circle cx="780" cy="540" r="6"/><circle cx="300" cy="515" r="6"/>
+    <path d="M535 341 L780 180 M536 355 L930 238 M532 373 L780 540 M494 370 L300 515" fill="none" stroke-width="3" stroke-dasharray="5 7"/>
   </g>
-
-  <g transform="translate(520 812) rotate(4 170 135)" filter="url(#shadow)">
-    <path d="M18 26 L327 3 342 249 41 268Z" fill="#E8E3D9" stroke="#111111" stroke-width="2"/>
-    <g stroke="#888178" stroke-width="1">
-      <path d="M55 58 H301 M54 78 H305 M53 98 H307 M52 118 H309 M51 138 H311 M50 158 H313 M49 178 H315 M48 198 H317 M47 218 H319"/>
-      <path d="M112 43 V230 M178 38 V226 M246 33 V221"/>
-    </g>
-    <path d="M230 166 C258 137 303 137 329 163 L337 197 C319 220 286 228 254 215Z" fill="#C9C4BA" stroke="#111111" stroke-width="2"/>
-    <path d="M291 161 L258 213" stroke="#111111" stroke-width="5"/>
-  </g>
-
-  <g transform="translate(518 758)">
-    <path d="M24 64 L118 64 151 53 169 55 139 75 40 75Z" fill="#EEE9E0" stroke="#111111" stroke-width="2"/>
-    <path d="M92 14 V64 M58 30 L92 14 130 34 M92 20 L57 55 M92 20 L132 55" fill="none" stroke="#111111" stroke-width="1.5"/>
-  </g>
-
-  <g transform="translate(690 617) rotate(2 100 55)" filter="url(#shadow)">
-    <path d="M0 14 L35 5 78 11 119 4 161 13 201 7 201 107 164 101 123 108 81 99 39 107 0 101Z" fill="#EEE9E0" stroke="#111111"/>
-    <g fill="#111111">
-      <ellipse cx="55" cy="57" rx="17" ry="10"/><path d="M44 63 L38 87 M66 63 L72 87 M50 48 L46 35" stroke="#111111" stroke-width="3"/>
-      <ellipse cx="101" cy="57" rx="17" ry="10"/><path d="M90 63 L84 87 M112 63 L118 87 M96 48 L92 35" stroke="#111111" stroke-width="3"/>
-      <ellipse cx="148" cy="57" rx="17" ry="10"/><path d="M137 63 L131 87 M159 63 L165 87 M143 48 L139 35" stroke="#111111" stroke-width="3"/>
-    </g>
-  </g>
-</g>
-
-<g fill="#FFD400" stroke="#FFD400">
-  <circle cx="407" cy="515" r="28"/>
-  <circle cx="595" cy="514" r="6"/><circle cx="650" cy="494" r="6"/><circle cx="705" cy="519" r="6"/><circle cx="758" cy="485" r="6"/><circle cx="814" cy="527" r="6"/><circle cx="860" cy="493" r="6"/><circle cx="730" cy="570" r="6"/><circle cx="790" cy="580" r="6"/>
-  <path d="M435 515 L595 514 M435 515 L650 494 M435 515 L705 519 M435 515 L730 570 M595 514 L650 494 M650 494 L705 519 M705 519 L758 485 M758 485 L814 527 M814 527 L860 493 M705 519 L730 570 M730 570 L790 580 M790 580 L814 527" fill="none" stroke-width="2.5"/>
-  <path d="M409 543 C432 626 463 699 492 780" fill="none" stroke-width="3"/>
-</g>
+  <g filter="url(#grain)" opacity="0.35"><rect width="1200" height="720" fill="#111111"/></g>
 </svg>
