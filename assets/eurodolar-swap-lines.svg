@@ -1,44 +1,101 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1400 800" role="img" aria-labelledby="title desc">
-  <title id="title">Cómo una swap line lleva dólares de la Fed al sistema offshore</title>
-  <desc id="desc">Bancos fuera de Estados Unidos sufren presión de liquidez, un banco central extranjero recibe dólares de la Reserva Federal mediante una swap line y los presta a su sistema.</desc>
-  <rect width="1400" height="800" fill="#F4F0E7"/>
-  <rect x="74" y="70" width="190" height="42" fill="#FFD400"/>
-  <g fill="#111111" font-family="Arial, Helvetica, sans-serif">
-    <text x="91" y="99" font-size="22" font-weight="700" letter-spacing="1">EURODÓLAR · 02</text>
-    <text x="78" y="202" font-size="72" font-weight="800">CUANDO TODOS QUIEREN DÓLARES</text>
-    <text x="80" y="269" font-size="34">Crear depósitos no elimina el problema de conseguir liquidez.</text>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1280" role="img" aria-labelledby="title desc">
+<title id="title">Collage editorial sobre financiación en dólares y swap lines</title>
+<desc id="desc">Collage sobre papel hueso con documentos, bancos y pilas de monedas unidos por una línea amarilla que representa el acceso a liquidez en dólares.</desc>
+<defs>
+  <filter id="grain" x="-10%" y="-10%" width="120%" height="120%">
+    <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="3" seed="23" result="noise"/>
+    <feColorMatrix in="noise" type="saturate" values="0" result="mono"/>
+    <feComponentTransfer in="mono"><feFuncA type="table" tableValues="0 0.07"/></feComponentTransfer>
+    <feBlend in="SourceGraphic" mode="multiply"/>
+  </filter>
+  <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%"><feDropShadow dx="7" dy="9" stdDeviation="5" flood-color="#111111" flood-opacity="0.18"/></filter>
+  <clipPath id="tagA"><path d="M0 18 L17 4 160 9 179 2 198 12 201 66 185 74 23 69 7 75Z"/></clipPath>
+  <clipPath id="scrap"><path d="M0 15 L37 6 82 13 126 4 169 13 213 6 256 15 295 4 330 14 330 225 293 216 249 224 205 216 165 224 120 215 74 224 35 216 0 224Z"/></clipPath>
+</defs>
+<rect width="1024" height="1280" fill="#F4F0E7"/>
+<rect x="56" y="54" width="912" height="1138" fill="none" stroke="#111111" stroke-width="3"/>
+
+<g filter="url(#grain)">
+  <g transform="translate(86 665) rotate(-4 170 180)" filter="url(#shadow)">
+    <path d="M10 27 L350 8 365 345 26 362Z" fill="#E8E3D9" stroke="#111111" stroke-width="2"/>
+    <path d="M28 44 L331 28 344 327 43 340Z" fill="none" stroke="#111111" stroke-width="2"/>
+    <path d="M46 61 L312 47 324 306 58 320Z" fill="none" stroke="#777168" stroke-width="1"/>
+    <path d="M88 101 H286 M84 131 H290 M80 161 H294 M76 191 H298 M72 221 H302 M68 251 H306" stroke="#8E887E" stroke-width="1.3"/>
+    <circle cx="190" cy="304" r="41" fill="#D2CDC3" stroke="#111111" stroke-width="2"/>
+    <circle cx="190" cy="304" r="26" fill="none" stroke="#777168" stroke-width="1.5" stroke-dasharray="3 5"/>
   </g>
-  <g fill="#F4F0E7" stroke="#111111" stroke-width="4">
-    <rect x="82" y="415" width="330" height="195"/>
-    <rect x="540" y="415" width="330" height="195"/>
-    <rect x="998" y="415" width="320" height="195"/>
+
+  <g transform="translate(29 763)" opacity="0.9">
+    <path d="M12 113 L12 39 61 12 111 39 111 113Z" fill="#EEE9E0" stroke="#111111" stroke-width="2"/>
+    <path d="M29 52 V98 M54 52 V98 M79 52 V98" stroke="#111111" stroke-width="3"/>
   </g>
-  <g stroke="#D93A2F" stroke-width="7" fill="none">
-    <path d="M412 513 H520"/>
-    <path d="M498 492 L520 513 L498 534"/>
+
+  <g transform="translate(562 292) rotate(-2 100 40)" filter="url(#shadow)" clip-path="url(#tagA)">
+    <rect width="201" height="78" fill="#2C2C2C"/>
+    <circle cx="25" cy="29" r="8" fill="#E8E3D9"/>
+    <path d="M45 29 H172" stroke="#D8D4CB" stroke-width="2"/>
   </g>
-  <g stroke="#111111" stroke-width="5" fill="none">
-    <path d="M998 513 H892"/>
-    <path d="M914 492 L892 513 L914 534"/>
+  <g transform="translate(554 386) rotate(1 100 40)" filter="url(#shadow)" clip-path="url(#tagA)">
+    <rect width="201" height="78" fill="#E8E3D9"/>
+    <circle cx="25" cy="29" r="8" fill="#111111"/>
+    <path d="M45 29 H172" stroke="#777168" stroke-width="2"/>
   </g>
-  <rect x="886" y="466" width="112" height="34" fill="#FFD400" transform="rotate(-2 886 466)"/>
-  <g fill="#111111" font-family="Arial, Helvetica, sans-serif">
-    <text x="110" y="460" font-size="28" font-weight="700">BANCOS OFFSHORE</text>
-    <text x="112" y="508" font-size="23">Pasivos en dólares</text>
-    <text x="112" y="546" font-size="23">vencen hoy.</text>
-    <text x="112" y="585" font-size="23" font-weight="700" fill="#D93A2F">FALTA LIQUIDEZ</text>
-    <text x="566" y="460" font-size="28" font-weight="700">BANCO CENTRAL</text>
-    <text x="566" y="508" font-size="23">Recibe dólares</text>
-    <text x="566" y="546" font-size="23">y los presta a bancos</text>
-    <text x="566" y="584" font-size="23">de su jurisdicción.</text>
-    <text x="1023" y="460" font-size="28" font-weight="700">RESERVA FEDERAL</text>
-    <text x="1023" y="508" font-size="23">Entrega dólares</text>
-    <text x="1023" y="546" font-size="23">contra moneda local.</text>
-    <text x="438" y="490" font-size="20" font-weight="700" fill="#D93A2F">PRESIÓN</text>
-    <text x="892" y="490" font-size="20" font-weight="700">SWAP LINE</text>
-    <text x="80" y="698" font-size="31" font-weight="700">LA IRONÍA</text>
-    <text x="282" y="698" font-size="30">un mercado offshore puede necesitar una válvula conectada a la Fed.</text>
-    <text x="82" y="754" font-size="25" font-style="italic">El problema no es que los dólares “desaparezcan”; es conseguirlos justo cuando toca pagar.</text>
+  <g transform="translate(548 529) rotate(-1 100 40)" filter="url(#shadow)" clip-path="url(#tagA)">
+    <rect width="201" height="78" fill="#E8E3D9"/>
+    <circle cx="25" cy="29" r="8" fill="#111111"/>
+    <path d="M45 29 H172" stroke="#777168" stroke-width="2"/>
   </g>
-  <path d="M282 711 C560 690 810 723 1188 705" stroke="#FFD400" stroke-width="13" opacity="0.95" fill="none"/>
+  <g transform="translate(541 674) rotate(2 100 40)" filter="url(#shadow)" clip-path="url(#tagA)">
+    <rect width="201" height="78" fill="#E8E3D9"/>
+    <circle cx="25" cy="29" r="8" fill="#111111"/>
+    <path d="M45 29 H172" stroke="#777168" stroke-width="2"/>
+  </g>
+
+  <g transform="translate(783 184)" filter="url(#shadow)">
+    <circle cx="78" cy="78" r="73" fill="#E8E3D9" stroke="#111111" stroke-width="2"/>
+    <path d="M29 66 L78 35 127 66Z" fill="#EEE9E0" stroke="#111111" stroke-width="2"/>
+    <rect x="36" y="66" width="84" height="61" fill="#EEE9E0" stroke="#111111" stroke-width="2"/>
+    <path d="M53 77 V116 M70 77 V116 M87 77 V116 M104 77 V116" stroke="#111111" stroke-width="4"/>
+  </g>
+
+  <g transform="translate(782 395)">
+    <circle cx="45" cy="45" r="42" fill="#E8E3D9" stroke="#111111" stroke-width="2"/>
+    <g fill="#BFBAB0" stroke="#111111" stroke-width="1">
+      <ellipse cx="45" cy="36" rx="18" ry="6"/><rect x="27" y="36" width="36" height="22"/><ellipse cx="45" cy="58" rx="18" ry="6"/>
+      <path d="M27 44 H63 M27 51 H63"/>
+    </g>
+  </g>
+  <g transform="translate(782 538)">
+    <circle cx="45" cy="45" r="42" fill="#E8E3D9" stroke="#111111" stroke-width="2"/>
+    <g fill="#BFBAB0" stroke="#111111" stroke-width="1">
+      <ellipse cx="45" cy="36" rx="18" ry="6"/><rect x="27" y="36" width="36" height="22"/><ellipse cx="45" cy="58" rx="18" ry="6"/>
+      <path d="M27 44 H63 M27 51 H63"/>
+    </g>
+  </g>
+  <g transform="translate(782 684)">
+    <circle cx="45" cy="45" r="42" fill="#E8E3D9" stroke="#111111" stroke-width="2"/>
+    <g fill="#BFBAB0" stroke="#111111" stroke-width="1">
+      <ellipse cx="45" cy="36" rx="18" ry="6"/><rect x="27" y="36" width="36" height="22"/><ellipse cx="45" cy="58" rx="18" ry="6"/>
+      <path d="M27 44 H63 M27 51 H63"/>
+    </g>
+  </g>
+
+  <g transform="translate(815 814) rotate(7 165 112)" clip-path="url(#scrap)" opacity="0.75">
+    <rect width="330" height="225" fill="#EEE9E0"/>
+    <path d="M40 20 V205 M82 15 V210 M124 13 V212 M166 8 V217 M208 14 V211 M250 9 V216" stroke="#C6C0B7" stroke-width="1"/>
+    <path d="M15 53 H315 M12 98 H318 M17 145 H313 M10 190 H320" stroke="#C6C0B7" stroke-width="1"/>
+  </g>
+</g>
+
+<g fill="none" stroke="#FFD400" stroke-width="8" stroke-linecap="square" stroke-linejoin="miter">
+  <path d="M390 889 H466 V716 H541"/>
+  <path d="M742 713 H785"/>
+  <path d="M749 568 H785"/>
+  <path d="M755 425 H785"/>
+  <path d="M827 395 V337 H861 V329"/>
+  <path d="M827 480 V538 M827 623 V684"/>
+</g>
+<g fill="#FFD400">
+  <rect x="853" y="324" width="16" height="16" transform="rotate(8 861 332)"/>
+</g>
 </svg>
