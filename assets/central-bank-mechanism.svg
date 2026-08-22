@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 760" role="img" aria-labelledby="title desc">
+  <title id="title">Cómo actúa un banco central sobre la economía</title>
+  <desc id="desc">Un banco central en el centro conecta tipos de interés, reservas bancarias, compras de activos y sistema de pagos con crédito, gasto e inflación.</desc>
+  <rect width="1200" height="760" fill="#F4F0E7"/>
+  <g fill="none" stroke="#111111" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter">
+    <rect x="400" y="245" width="400" height="210"/>
+    <path d="M600 245V120M600 455V640M400 350H190M800 350h210"/>
+    <path d="M584 142l16-22 16 22M584 618l16 22 16-22M212 334l-22 16 22 16M988 334l22 16-22 16"/>
+    <rect x="445" y="285" width="310" height="118" fill="#FFD400" stroke="none" transform="rotate(-1 600 344)"/>
+    <rect x="445" y="285" width="310" height="118"/>
+    <rect x="440" y="55" width="320" height="65"/>
+    <rect x="35" y="315" width="155" height="70"/>
+    <rect x="1010" y="315" width="155" height="70"/>
+    <rect x="430" y="640" width="340" height="70"/>
+  </g>
+  <g fill="#111111" font-family="Arial, Helvetica, sans-serif" font-weight="700" text-anchor="middle">
+    <text x="600" y="333" font-size="38">BANCO CENTRAL</text>
+    <text x="600" y="374" font-size="22">NO ES TU BANCO. ES EL BANCO DE LOS BANCOS.</text>
+    <text x="600" y="96" font-size="26">TIPOS DE INTERÉS</text>
+    <text x="112" y="358" font-size="21">RESERVAS</text>
+    <text x="1088" y="350" font-size="19">COMPRA / VENTA</text>
+    <text x="1088" y="373" font-size="19">DE ACTIVOS</text>
+    <text x="600" y="683" font-size="23">PAGOS · LIQUIDEZ · ESTABILIDAD</text>
+  </g>
+  <g fill="#111111" font-family="Arial, Helvetica, sans-serif" font-size="20">
+    <text x="815" y="520">↓ cambia condiciones financieras</text>
+    <text x="815" y="550">↓ cambia crédito y gasto</text>
+    <text x="815" y="580">↓ intenta influir en inflación</text>
+  </g>
+  <path d="M792 506c60-24 105-20 150 3" fill="none" stroke="#111111" stroke-width="3" stroke-linecap="round"/>
+</svg>
