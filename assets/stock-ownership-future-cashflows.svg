@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 820" role="img" aria-labelledby="title desc">
+<title id="title">Acción, beneficios futuros, riesgo y precio</title>
+<desc id="desc">Diagrama editorial sobre una acción: precio hoy conectado con beneficios futuros, dividendos, reinversión, riesgo y tiempo.</desc>
+<rect width="1200" height="820" fill="#F4F0E7"/>
+<g fill="none" stroke="#111111" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter">
+<rect x="82" y="104" width="320" height="210"/>
+<path d="M82 172h320M178 104v210M286 104v210"/>
+<path d="M402 210 C500 180, 560 180, 642 210"/>
+<path d="M402 252 C518 302, 554 360, 640 414"/>
+<path d="M402 294 C514 508, 574 570, 642 628"/>
+<path d="M660 178h350v104H660z"/>
+<path d="M660 362h350v104H660z"/>
+<path d="M660 546h350v104H660z"/>
+<path d="M1030 230l52 0M1060 202l28 28-28 28"/>
+<path d="M1030 414l52 0M1060 386l28 28-28 28"/>
+<path d="M1030 598l52 0M1060 570l28 28-28 28"/>
+</g>
+<g font-family="Arial, Helvetica, sans-serif" fill="#111111">
+<text x="104" y="148" font-size="30" font-weight="900">ACCIÓN</text>
+<text x="108" y="222" font-size="26">una parte</text>
+<text x="108" y="256" font-size="26">de empresa</text>
+<text x="198" y="222" font-size="26">precio</text>
+<text x="198" y="256" font-size="26">hoy</text>
+<text x="306" y="222" font-size="26">riesgo</text>
+<text x="306" y="256" font-size="26">tiempo</text>
+<text x="690" y="242" font-size="31" font-weight="900">BENEFICIOS FUTUROS</text>
+<text x="690" y="426" font-size="31" font-weight="900">DIVIDENDOS / REINVERSIÓN</text>
+<text x="690" y="610" font-size="31" font-weight="900">LO QUE PAGASTE</text>
+<text x="84" y="388" font-size="62" font-weight="900">NO COMPRAS</text>
+<text x="84" y="456" font-size="62" font-weight="900">UNA LÍNEA.</text>
+<text x="84" y="530" font-size="28">Compras una expectativa</text>
+<text x="84" y="566" font-size="28">sobre dinero futuro.</text>
+</g>
+<path d="M76 620 C240 588, 374 612, 522 584 C650 560, 784 570, 922 542" fill="none" stroke="#FFD400" stroke-width="34" stroke-linecap="butt" opacity=".9"/>
+<path d="M76 620 C240 588, 374 612, 522 584 C650 560, 784 570, 922 542" fill="none" stroke="#111111" stroke-width="5" stroke-linecap="square"/>
+<g font-family="Arial, Helvetica, sans-serif" fill="#111111" font-size="24" font-weight="900">
+<text x="724" y="704">PRECIO = FUTURO · RIESGO · TIPOS · HUMOR</text>
+</g>
+</svg>
