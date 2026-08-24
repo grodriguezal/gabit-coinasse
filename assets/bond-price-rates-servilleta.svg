@@ -1,0 +1,43 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 720" role="img" aria-labelledby="title desc">
+<title id="title">Bonos viejos y tipos nuevos</title>
+<desc id="desc">Ilustración editorial de Gabit Coinasse: un bono viejo paga 5, un bono nuevo paga 8 y una flecha muestra que el precio del bono viejo baja para competir.</desc>
+<rect width="1200" height="720" fill="#F4F0E7"/>
+<filter id="grain"><feTurbulence type="fractalNoise" baseFrequency=".9" numOctaves="2" stitchTiles="stitch"/><feColorMatrix type="saturate" values="0"/><feComponentTransfer><feFuncA type="table" tableValues="0 .12"/></feComponentTransfer></filter>
+<rect width="1200" height="720" filter="url(#grain)" opacity=".55"/>
+<g fill="none" stroke="#111" stroke-width="5" stroke-linecap="square" stroke-linejoin="miter">
+<path d="M92 88h430v228H92z"/><path d="M108 112h398"/><path d="M126 160h236"/><path d="M126 210h178"/><path d="M126 260h245"/>
+<path d="M680 88h430v228H680z"/><path d="M696 112h398"/><path d="M714 160h236"/><path d="M714 210h178"/><path d="M714 260h245"/>
+<path d="M513 438c-98 54-224 54-352 0"/><path d="M514 438l-40-10 17 37"/>
+<path d="M694 438c98 54 224 54 352 0"/><path d="M694 438l40-10-17 37"/>
+<path d="M558 196h78"/><path d="M638 196l-26-22 9 22-9 22z" fill="#111"/>
+<path d="M561 535h88"/>
+</g>
+<g font-family="Arial Narrow, Impact, sans-serif" fill="#111">
+<text x="112" y="70" font-size="34" font-weight="900">BONO VIEJO</text>
+<text x="700" y="70" font-size="34" font-weight="900">BONO NUEVO</text>
+<text x="126" y="152" font-size="32" font-weight="900">PAGA 5</text>
+<text x="714" y="152" font-size="32" font-weight="900">PAGA 8</text>
+<text x="126" y="206" font-size="24">MISMO RIESGO</text>
+<text x="714" y="206" font-size="24">MISMO RIESGO</text>
+<text x="126" y="256" font-size="24">MISMO VENCIMIENTO</text>
+<text x="714" y="256" font-size="24">MISMO VENCIMIENTO</text>
+<text x="78" y="394" font-size="42" font-weight="900">¿QUIÉN COMPRA EL VIEJO A 100?</text>
+<text x="392" y="526" font-size="44" font-weight="900">PRECIO ↓</text>
+<text x="675" y="526" font-size="44" font-weight="900">YIELD ↑</text>
+<text x="442" y="640" font-size="28" font-weight="900">EL CONTRATO NO CAMBIA. EL PRECIO SÍ.</text>
+</g>
+<g>
+<rect x="118" y="164" width="160" height="44" fill="#FFD400" transform="rotate(-2 118 164)"/>
+<rect x="706" y="164" width="160" height="44" fill="#FFD400" transform="rotate(1 706 164)"/>
+<rect x="382" y="486" width="218" height="52" fill="#FFD400" transform="rotate(-1 382 486)"/>
+</g>
+<g font-family="Arial Narrow, Impact, sans-serif" fill="#111">
+<text x="126" y="198" font-size="32" font-weight="900">PAGA 5</text>
+<text x="714" y="198" font-size="32" font-weight="900">PAGA 8</text>
+<text x="392" y="526" font-size="44" font-weight="900">PRECIO ↓</text>
+</g>
+<g fill="none" stroke="#111" stroke-width="3" stroke-linecap="round">
+<path d="M80 402c138 23 272 23 405 0" stroke-dasharray="7 10"/>
+<path d="M660 565c40-20 78-16 116 12"/>
+</g>
+</svg>
