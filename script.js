@@ -20,6 +20,72 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') closeMenu({ restoreFocus: true });
 });
 
+// Hub search + progressive reveal.
+// All links remain in the HTML for crawlability and no-JS access; JavaScript only
+// controls what is visible to the reader. Hub cards are text-only, so this keeps
+// the pages lightweight while preserving direct discovery by search engines.
+const normalizeHubText = (value = '') => value
+  .normalize('NFD')
+  .replace(/[\u0300-\u036f]/g, '')
+  .toLowerCase()
+  .replace(/\s+/g, ' ')
+  .trim();
+
+document.querySelectorAll('[data-hub]').forEach((hub) => {
+  const grid = hub.querySelector('[data-hub-grid]');
+  const controls = hub.querySelector('[data-hub-controls]');
+  const input = hub.querySelector('[data-hub-search]');
+  const status = hub.querySelector('[data-hub-status]');
+  const loadMore = hub.querySelector('[data-hub-more]');
+  if (!grid || !controls || !input || !loadMore) return;
+
+  const cards = Array.from(grid.children).filter((card) => card.matches('a'));
+  const pageSize = Number.parseInt(hub.dataset.hubPageSize || '12', 10) || 12;
+  let visibleCount = pageSize;
+
+  cards.forEach((card) => {
+    card.dataset.hubHaystack = normalizeHubText([
+      card.textContent,
+      card.getAttribute('data-search') || '',
+      card.getAttribute('href') || '',
+    ].join(' '));
+  });
+
+  const renderHub = () => {
+    const query = normalizeHubText(input.value);
+    let matchCount = 0;
+
+    cards.forEach((card, index) => {
+      const matchesQuery = !query || card.dataset.hubHaystack.includes(query);
+      if (matchesQuery) matchCount += 1;
+      card.hidden = query ? !matchesQuery : index >= visibleCount;
+    });
+
+    if (status) {
+      if (query) {
+        status.textContent = matchCount === 1 ? '1 resultado' : `${matchCount} resultados`;
+      } else {
+        status.textContent = cards.length > pageSize ? `Mostrando ${Math.min(visibleCount, cards.length)} de ${cards.length}` : '';
+      }
+    }
+
+    loadMore.hidden = Boolean(query) || visibleCount >= cards.length;
+  };
+
+  controls.hidden = false;
+  input.addEventListener('input', () => {
+    visibleCount = pageSize;
+    renderHub();
+  });
+
+  loadMore.addEventListener('click', () => {
+    visibleCount += pageSize;
+    renderHub();
+  });
+
+  renderHub();
+});
+
 // Google Analytics 4 — Gabit Coinasse
 // Advanced Consent Mode: Google tag loads for all visitors with analytics storage
 // denied by default. Before consent, GA4 can send cookieless pings; full analytics
