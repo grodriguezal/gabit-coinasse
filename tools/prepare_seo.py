@@ -5,15 +5,19 @@ import xml.etree.ElementTree as ET
 
 BASE_URL = "https://gabitcoinasse.com"
 SITEMAP = Path("sitemap.xml")
+CHATGPT_ARTIFACT_PATTERN = re.compile(r"[A-Za-z_]+.*?", re.DOTALL)
+
+
+def html_files():
+    for path in Path(".").rglob("*.html"):
+        if ".git" not in path.parts:
+            yield path
 
 
 def clean_index_links() -> None:
     pattern = re.compile(r'href=(["\'])((?:\.\./)*)index\.html\1')
 
-    for path in Path(".").rglob("*.html"):
-        if ".git" in path.parts:
-            continue
-
+    for path in html_files():
         original = path.read_text(encoding="utf-8")
 
         def repl(match: re.Match) -> str:
@@ -25,6 +29,34 @@ def clean_index_links() -> None:
         updated = pattern.sub(repl, original)
         if updated != original:
             path.write_text(updated, encoding="utf-8")
+
+
+def clean_chatgpt_artifacts() -> None:
+    cleaned_files = []
+
+    for path in html_files():
+        original = path.read_text(encoding="utf-8")
+        updated, replacements = CHATGPT_ARTIFACT_PATTERN.subn("", original)
+
+        if replacements:
+            path.write_text(updated, encoding="utf-8")
+            cleaned_files.append((path, replacements))
+
+    if cleaned_files:
+        print("Removed ChatGPT citation artifacts:")
+        for path, replacements in cleaned_files:
+            print(f"  {path}: {replacements}")
+
+    residual = []
+    for path in html_files():
+        text = path.read_text(encoding="utf-8")
+        if "" in text or "" in text:
+            residual.append(str(path))
+
+    if residual:
+        raise RuntimeError(
+            "Residual ChatGPT citation markers found in: " + ", ".join(residual)
+        )
 
 
 def last_modified(path: Path) -> str | None:
@@ -71,5 +103,6 @@ def update_sitemap_lastmod() -> None:
 
 
 if __name__ == "__main__":
+    clean_chatgpt_artifacts()
     clean_index_links()
     update_sitemap_lastmod()
