@@ -27,5 +27,6 @@
 .connection-map a,.connection-map span{padding:18px;border:1px solid var(--ink);margin:0 -1px -1px 0;text-decoration:none;font-weight:700}
 .connection-map a:hover,.connection-map a:focus-visible{background:var(--yellow);outline:0}
 .connection-map span{color:#6f6b64}
+.small-detail>div>span{display:none}
 @media(max-width:900px){.territory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:560px){h1,h2,h3{overflow-wrap:anywhere}.connection-map>div{grid-template-columns:1fr}.territory-grid{grid-template-columns:minmax(0,1fr)}.mobile-menu{inset:72px 0 auto;max-height:calc(100dvh - 72px);overflow-y:auto}.hero-art{width:calc(100% - 8px);margin-inline:auto;transform:none}}
