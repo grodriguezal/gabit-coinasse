@@ -1,3 +1,12 @@
+// Site favicon — shared across all static pages.
+if (!document.querySelector('link[rel~="icon"]')) {
+  const favicon = document.createElement('link');
+  favicon.rel = 'icon';
+  favicon.type = 'image/svg+xml';
+  favicon.href = '/favicon.svg?v=20260911';
+  document.head.appendChild(favicon);
+}
+
 const menuButton = document.querySelector('.menu-button');
 const mobileMenu = document.querySelector('#mobile-menu');
 const closeMenu = ({ restoreFocus = false } = {}) => {
