@@ -1,9 +1,16 @@
 // Site favicon — shared across all static pages.
-if (!document.querySelector('link[rel~="icon"]')) {
+const faviconHref = '/favicon.svg?v=20260911-tight';
+const existingFavicons = document.querySelectorAll('link[rel~="icon"]');
+if (existingFavicons.length) {
+  existingFavicons.forEach((favicon) => {
+    favicon.type = 'image/svg+xml';
+    favicon.href = faviconHref;
+  });
+} else {
   const favicon = document.createElement('link');
   favicon.rel = 'icon';
   favicon.type = 'image/svg+xml';
-  favicon.href = '/favicon.svg?v=20260911';
+  favicon.href = faviconHref;
   document.head.appendChild(favicon);
 }
 
