@@ -20,6 +20,37 @@ document.addEventListener('keydown', (event) => {
   if (event.key === 'Escape' && menuButton?.getAttribute('aria-expanded') === 'true') closeMenu({ restoreFocus: true });
 });
 
+// Reading-time labels: keep article metadata inviting and comparable across the site.
+// Existing long-form pieces are normalized to an editorial 5–9 minute scale;
+// Explainers and already-short labels remain unchanged.
+const READING_TIME_MAP = new Map([
+  [22, 9], [21, 9], [20, 8], [19, 8], [18, 8], [17, 7],
+  [16, 7], [15, 7], [14, 6], [13, 6], [12, 6], [11, 5], [10, 5],
+  [9, 5], [8, 4], [7, 4], [6, 3], [5, 3],
+]);
+
+const normalizeReadingTimeLabels = () => {
+  const selectors = [
+    '.eyebrow',
+    '.hub-grid span',
+    '.feature-card span',
+    '.story-list span',
+    '.rabbit-list span',
+    '.rabbit-list small',
+    '.latest-grid span',
+    '.meta',
+  ];
+
+  document.querySelectorAll(selectors.join(',')).forEach((label) => {
+    label.textContent = label.textContent.replace(/\b(\d{1,2})\s*MIN\b/g, (match, value) => {
+      const minutes = Number.parseInt(value, 10);
+      return `${READING_TIME_MAP.get(minutes) ?? minutes} MIN`;
+    });
+  });
+};
+
+normalizeReadingTimeLabels();
+
 // Hub search + progressive reveal.
 // All links remain in the HTML for crawlability and no-JS access; JavaScript only
 // controls what is visible to the reader. Hub cards are text-only, so this keeps
