@@ -14,6 +14,38 @@ if (existingFavicons.length) {
   document.head.appendChild(favicon);
 }
 
+// Social channels — shared across all static page footers.
+const footerNav = document.querySelector('.site-footer > div');
+if (footerNav && !footerNav.querySelector('.site-socials')) {
+  const socials = document.createElement('span');
+  socials.className = 'site-socials';
+  socials.innerHTML = `
+    <a class="site-social-link" href="https://www.instagram.com/gabitcoinasse/" target="_blank" rel="noopener noreferrer" aria-label="Gabit Coinasse en Instagram" title="Instagram">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <rect x="3" y="3" width="18" height="18" rx="5"></rect>
+        <circle cx="12" cy="12" r="4.2"></circle>
+        <circle class="social-dot" cx="17.4" cy="6.7" r="1.1"></circle>
+      </svg>
+    </a>
+    <a class="site-social-link" href="https://x.com/gabitcoinasse" target="_blank" rel="noopener noreferrer" aria-label="Gabit Coinasse en X" title="X">
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+        <path d="M5 4.5 19 19.5M19 4.5 5 19.5"></path>
+      </svg>
+    </a>`;
+  footerNav.appendChild(socials);
+
+  const socialStyles = document.createElement('style');
+  socialStyles.textContent = `
+    .site-socials{margin-left:auto;display:flex;align-items:center;gap:10px}
+    .site-footer>div .site-social-link{width:38px;height:38px;border:1px solid rgba(244,240,231,.45);display:inline-flex;align-items:center;justify-content:center;text-decoration:none;transition:background-color .15s ease,color .15s ease,border-color .15s ease}
+    .site-social-link svg{width:19px;height:19px;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+    .site-social-link .social-dot{fill:currentColor;stroke:none}
+    .site-social-link:hover,.site-social-link:focus-visible{background:#ffd400;color:#111;border-color:#ffd400;outline:0}
+    @media(max-width:540px){.site-socials{margin-left:0;margin-top:6px}}
+  `;
+  document.head.appendChild(socialStyles);
+}
+
 const menuButton = document.querySelector('.menu-button');
 const mobileMenu = document.querySelector('#mobile-menu');
 const closeMenu = ({ restoreFocus = false } = {}) => {
