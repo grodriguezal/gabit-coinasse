@@ -21,19 +21,12 @@ if (footerNav && !footerNav.querySelector('.site-socials')) {
   socials.className = 'site-socials';
   socials.innerHTML = `
     <a class="site-social-link" href="https://www.instagram.com/gabitcoinasse/" target="_blank" rel="noopener noreferrer" aria-label="Gabit Coinasse en Instagram" title="Instagram">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <rect x="3" y="3" width="18" height="18" rx="5"></rect>
-        <circle cx="12" cy="12" r="4.2"></circle>
-        <circle class="social-dot" cx="17.4" cy="6.7" r="1.1"></circle>
-      </svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><rect x="3" y="3" width="18" height="18" rx="5"></rect><circle cx="12" cy="12" r="4.2"></circle><circle class="social-dot" cx="17.4" cy="6.7" r="1.1"></circle></svg>
     </a>
     <a class="site-social-link" href="https://x.com/gabitcoinasse" target="_blank" rel="noopener noreferrer" aria-label="Gabit Coinasse en X" title="X">
-      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
-        <path d="M5 4.5 19 19.5M19 4.5 5 19.5"></path>
-      </svg>
+      <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 4.5 19 19.5M19 4.5 5 19.5"></path></svg>
     </a>`;
   footerNav.appendChild(socials);
-
   const socialStyles = document.createElement('style');
   socialStyles.textContent = `
     .site-socials{margin-left:auto;display:flex;align-items:center;gap:10px}
@@ -69,41 +62,25 @@ document.addEventListener('keydown', (event) => {
 });
 
 // Reading-time labels: keep article metadata inviting and comparable across the site.
-// Existing long-form pieces are normalized to an editorial 5–9 minute scale;
-// Explainers and already-short labels remain unchanged.
 const READING_TIME_MAP = new Map([
   [22, 9], [21, 9], [20, 8], [19, 8], [18, 8], [17, 7],
   [16, 7], [15, 7], [14, 6], [13, 6], [12, 6], [11, 5], [10, 5],
   [9, 5], [8, 4], [7, 4], [6, 3], [5, 3],
 ]);
-
 const normalizeReadingTimeText = (text = '') => text.replace(/\b(\d{1,2})\s*MIN\b/g, (match, value) => {
   const minutes = Number.parseInt(value, 10);
   return `${READING_TIME_MAP.get(minutes) ?? minutes} MIN`;
 });
-
 const normalizeReadingTimeLabels = () => {
-  const selectors = [
-    '.eyebrow',
-    '.hub-grid span',
-    '.feature-card span',
-    '.story-list span',
-    '.rabbit-list span',
-    '.rabbit-list small',
-    '.latest-grid span',
-    '.meta',
-  ];
-
+  const selectors = ['.eyebrow','.hub-grid span','.feature-card span','.story-list span','.rabbit-list span','.rabbit-list small','.latest-grid span','.meta'];
   document.querySelectorAll(selectors.join(',')).forEach((label) => {
     label.textContent = normalizeReadingTimeText(label.textContent);
   });
 };
-
 normalizeReadingTimeLabels();
 
-// Home temporal feed. It uses /articulos/ as its single source of truth, so every
-// new editorial article automatically moves to the top when the article index is
-// updated. Explainers are intentionally excluded from this chronological stream.
+// Home temporal feed. /articulos/ is the source of truth: publishing a new article
+// means putting it first in the library, which automatically refreshes these five.
 const homeHero = document.querySelector('main#main-content > .hero');
 if (homeHero && !document.querySelector('[data-recent-feed]')) {
   const recentSection = document.createElement('section');
@@ -115,7 +92,7 @@ if (homeHero && !document.querySelector('[data-recent-feed]')) {
       <div>
         <p class="section-kicker">EN ORDEN DE PUBLICACIÓN</p>
         <h2 id="recent-feed-title">LO ÚLTIMO.</h2>
-        <p class="recent-feed-intro">Los últimos artículos publicados, con lo nuevo siempre arriba. Un hilo temporal para seguir lo que estamos mirando ahora.</p>
+        <p class="recent-feed-intro">Los cinco artículos más recientes. Cada publicación nueva desplaza automáticamente al más antiguo de esta lista.</p>
       </div>
       <a class="recent-feed-all" href="articulos/">VER TODOS LOS ARTÍCULOS →</a>
     </div>
@@ -149,36 +126,11 @@ if (homeHero && !document.querySelector('[data-recent-feed]')) {
 
   const recentList = recentSection.querySelector('[data-recent-list]');
   const fallbackPosts = [
-    {
-      href: 'dinero/oro-tokenizado-vs-bitcoin/',
-      meta: 'DINERO · MERCADOS · 22 MIN',
-      title: 'SI PUEDES TOKENIZAR EL ORO, ¿PARA QUÉ NECESITAS BITCOIN?',
-      summary: 'Tokenizar el oro arregla buena parte de su torpeza digital. Eso deja al descubierto las diferencias fundamentales: custodia, oferta, colateral y qué significa poseer cada activo.',
-    },
-    {
-      href: 'economia/ia-productividad-salarios-desigualdad/',
-      meta: 'ECONOMÍA · PODER · MERCADOS · 22 MIN',
-      title: '¿QUIÉN SE QUEDA CON EL DINERO SI LA IA NOS HACE MÁS PRODUCTIVOS?',
-      summary: 'La IA puede elevar productividad y PIB. La pregunta difícil es cuánto termina como salario, precios más bajos, beneficios, activos o tiempo libre.',
-    },
-    {
-      href: 'poder/como-puede-europa-congelar-reservas-rusia/',
-      meta: 'PODER · DINERO · MERCADOS · 20 MIN',
-      title: '¿CÓMO PUEDE EUROPA CONGELAR MÁS DE €200.000 MILLONES DE RUSIA?',
-      summary: 'Una reserva internacional puede seguir siendo tuya y, aun así, dejar de estar disponible. Ahí empieza el poder de custodios, jurisdicciones y redes financieras.',
-    },
-    {
-      href: 'dinero/que-es-el-debasement-trade/',
-      meta: 'DINERO · MERCADOS · PODER · 20 MIN',
-      title: '¿QUÉ ES EL DEBASEMENT TRADE Y DE QUÉ TE ESTÁS PROTEGIENDO REALMENTE?',
-      summary: 'Deuda, inflación, tipos reales, oro y Bitcoin conectados por una pregunta: qué ocurre si las promesas nominales pierden valor real.',
-    },
-    {
-      href: 'mercados/por-que-wall-street-cae-cuando-empleo-sale-bien/',
-      meta: 'MERCADOS · ECONOMÍA · 18 MIN',
-      title: '¿POR QUÉ WALL STREET PUEDE CAER CUANDO EL EMPLEO SALE DEMASIADO BIEN?',
-      summary: 'Una buena noticia económica puede cambiar lo que el mercado espera de la Fed. Y cuando cambia el precio del dinero, cambia cuánto estamos dispuestos a pagar por el futuro.',
-    },
+    {href:'poder/por-que-gobierno-subsidia-empresas/',meta:'PODER · ECONOMÍA · 15 MIN',title:'¿POR QUÉ UN GOBIERNO LE DA DINERO A UNA EMPRESA PRIVADA?',summary:'Chips, fábricas y sectores estratégicos: cuándo una subvención compra algo útil que el mercado produciría demasiado poco y cuándo se convierte en un regalo caro.'},
+    {href:'dinero/que-pasaria-si-volvieramos-patron-oro/',meta:'DINERO · ECONOMÍA · PODER · 16 MIN',title:'¿QUÉ PASARÍA SI MAÑANA VOLVIÉRAMOS AL PATRÓN ORO?',summary:'Una moneda respaldada por oro limita al banco central. También cambia quién soporta la inflación, la deflación, las crisis y el ajuste de una economía.'},
+    {href:'poder/estados-unidos-crea-dolares-impuestos-fed/',meta:'PODER · DINERO · ECONOMÍA · 17 MIN',title:'SI ESTADOS UNIDOS PUEDE CREAR DÓLARES, ¿PARA QUÉ COBRA IMPUESTOS?',summary:'Qué parte de “el Estado imprime para gastar” es cierta, qué parte no y dónde aparece el riesgo real de inflación, dominancia fiscal y pérdida de confianza.'},
+    {href:'dinero/oro-tokenizado-vs-bitcoin/',meta:'DINERO · MERCADOS · 22 MIN',title:'SI PUEDES TOKENIZAR EL ORO, ¿PARA QUÉ NECESITAS BITCOIN?',summary:'Tokenizar el oro arregla buena parte de su torpeza digital. Eso deja al descubierto las diferencias fundamentales: custodia, oferta, colateral y qué significa poseer cada activo.'},
+    {href:'economia/ia-productividad-salarios-desigualdad/',meta:'ECONOMÍA · PODER · MERCADOS · 22 MIN',title:'¿QUIÉN SE QUEDA CON EL DINERO SI LA IA NOS HACE MÁS PRODUCTIVOS?',summary:'La IA puede elevar productividad y PIB. La pregunta difícil es cuánto termina como salario, precios más bajos, beneficios, activos o tiempo libre.'},
   ];
 
   const renderRecentPosts = (posts) => {
@@ -187,11 +139,9 @@ if (homeHero && !document.querySelector('[data-recent-feed]')) {
       const item = document.createElement('a');
       item.className = `recent-item${index === 0 ? ' is-latest' : ''}`;
       item.href = post.href;
-
       const order = document.createElement('span');
       order.className = 'recent-order';
       order.textContent = String(index + 1).padStart(2, '0');
-
       const copy = document.createElement('div');
       const metaRow = document.createElement('div');
       metaRow.className = 'recent-meta-row';
@@ -205,14 +155,12 @@ if (homeHero && !document.querySelector('[data-recent-feed]')) {
         badge.textContent = 'MÁS RECIENTE';
         metaRow.appendChild(badge);
       }
-
       const title = document.createElement('h3');
       title.textContent = post.title;
       const summary = document.createElement('p');
       summary.className = 'recent-summary';
       summary.textContent = post.summary;
       copy.append(metaRow, title, summary);
-
       const arrow = document.createElement('b');
       arrow.className = 'recent-arrow';
       arrow.setAttribute('aria-hidden', 'true');
@@ -223,7 +171,6 @@ if (homeHero && !document.querySelector('[data-recent-feed]')) {
   };
 
   renderRecentPosts(fallbackPosts);
-
   fetch('/articulos/', { cache: 'no-store' })
     .then((response) => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -242,24 +189,25 @@ if (homeHero && !document.querySelector('[data-recent-feed]')) {
           summary: card.querySelector('p')?.textContent?.trim() || '',
         }))
         .filter((post) => post.href && post.title);
-
       if (posts.length) renderRecentPosts(posts);
     })
-    .catch(() => {
-      // The current five-post fallback remains visible if the live index is unavailable.
-    });
+    .catch(() => {});
 }
 
-// Hub search + progressive reveal.
-// All links remain in the HTML for crawlability and no-JS access; JavaScript only
-// controls what is visible to the reader. Hub cards are text-only, so this keeps
-// the pages lightweight while preserving direct discovery by search engines.
+// Search, category filters and progressive reveal for hubs.
 const normalizeHubText = (value = '') => value
   .normalize('NFD')
   .replace(/[\u0300-\u036f]/g, '')
   .toLowerCase()
   .replace(/\s+/g, ' ')
   .trim();
+
+const getCardTerritories = (card) => {
+  const declared = card.dataset.territories;
+  if (declared) return declared.split(',').map((value) => normalizeHubText(value));
+  const meta = normalizeHubText(card.querySelector('span')?.textContent || '');
+  return ['dinero','economia','mercados','poder'].filter((territory) => meta.includes(territory));
+};
 
 document.querySelectorAll('[data-hub]').forEach((hub) => {
   const grid = hub.querySelector('[data-hub-grid]');
@@ -270,65 +218,67 @@ document.querySelectorAll('[data-hub]').forEach((hub) => {
   if (!grid || !controls || !input || !loadMore) return;
 
   const cards = Array.from(grid.children).filter((card) => card.matches('a'));
+  const filterButtons = Array.from(hub.querySelectorAll('[data-hub-filter]'));
   const pageSize = Number.parseInt(hub.dataset.hubPageSize || '12', 10) || 12;
   let visibleCount = pageSize;
+  let activeFilter = 'all';
 
   cards.forEach((card) => {
-    card.dataset.hubHaystack = normalizeHubText([
-      card.textContent,
-      card.getAttribute('data-search') || '',
-      card.getAttribute('href') || '',
-    ].join(' '));
+    card.dataset.hubHaystack = normalizeHubText([card.textContent, card.getAttribute('data-search') || '', card.getAttribute('href') || ''].join(' '));
+    card.dataset.hubTerritories = getCardTerritories(card).join(',');
   });
 
   const renderHub = () => {
     const query = normalizeHubText(input.value);
-    let matchCount = 0;
-
-    cards.forEach((card, index) => {
+    const matches = cards.filter((card) => {
       const matchesQuery = !query || card.dataset.hubHaystack.includes(query);
-      if (matchesQuery) matchCount += 1;
-      card.hidden = query ? !matchesQuery : index >= visibleCount;
+      const territories = card.dataset.hubTerritories.split(',').filter(Boolean);
+      const matchesFilter = activeFilter === 'all' || territories.includes(activeFilter);
+      return matchesQuery && matchesFilter;
     });
 
+    cards.forEach((card) => { card.hidden = true; });
+    matches.slice(0, visibleCount).forEach((card) => { card.hidden = false; });
+
     if (status) {
-      if (query) {
-        status.textContent = matchCount === 1 ? '1 resultado' : `${matchCount} resultados`;
+      if (!matches.length) {
+        status.textContent = 'No encontramos artículos con esos criterios.';
+      } else if (matches.length > visibleCount) {
+        status.textContent = `Mostrando ${visibleCount} de ${matches.length}`;
       } else {
-        status.textContent = cards.length > pageSize ? `Mostrando ${Math.min(visibleCount, cards.length)} de ${cards.length}` : '';
+        status.textContent = matches.length === 1 ? '1 artículo' : `${matches.length} artículos`;
       }
     }
-
-    loadMore.hidden = Boolean(query) || visibleCount >= cards.length;
+    loadMore.hidden = visibleCount >= matches.length;
   };
+
+  filterButtons.forEach((button) => {
+    button.addEventListener('click', () => {
+      activeFilter = button.dataset.hubFilter || 'all';
+      visibleCount = pageSize;
+      filterButtons.forEach((candidate) => candidate.setAttribute('aria-pressed', String(candidate === button)));
+      renderHub();
+    });
+  });
 
   controls.hidden = false;
   input.addEventListener('input', () => {
     visibleCount = pageSize;
     renderHub();
   });
-
   loadMore.addEventListener('click', () => {
     visibleCount += pageSize;
     renderHub();
   });
-
   renderHub();
 });
 
 // Google Analytics 4 — Gabit Coinasse
 const GA_MEASUREMENT_ID = 'G-Z1DYMZX6YM';
-
 window.dataLayer = window.dataLayer || [];
-window.gtag = window.gtag || function gtag() {
-  window.dataLayer.push(arguments);
-};
-
+window.gtag = window.gtag || function gtag() { window.dataLayer.push(arguments); };
 window.gtag('js', new Date());
-window.gtag('config', GA_MEASUREMENT_ID, {
-  anonymize_ip: true,
-});
-
+window.gtag('config', GA_MEASUREMENT_ID, { anonymize_ip: true });
 const googleTagScript = document.createElement('script');
 googleTagScript.async = true;
 googleTagScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
