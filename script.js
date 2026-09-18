@@ -308,3 +308,104 @@ const googleTagScript = document.createElement('script');
 googleTagScript.async = true;
 googleTagScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
 document.head.appendChild(googleTagScript);
+
+// Mobile colour feedback: one reveal per element, native one-tap navigation.
+(() => {
+  const touch = window.matchMedia('(hover: none) and (pointer: coarse)');
+  const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
+  const styles = document.createElement('style');
+  styles.id = 'gabit-mobile-colour';
+  styles.textContent = `
+    @media (hover:none) and (pointer:coarse) {
+      a[href],button{-webkit-tap-highlight-color:rgba(255,212,0,.28)}
+      .gc-touch-pressed{background-color:var(--yellow)!important;color:var(--ink)!important;animation:none!important}
+      @media (prefers-reduced-motion:no-preference) {
+        .gc-touch-reveal{animation:gc-mobile-colour 1050ms ease-out}
+        .feature-card h3 .feature-title-link.gc-touch-reveal{animation:gc-mobile-underline 1050ms ease-out}
+        .hero h1 span.gc-touch-reveal{animation:none}
+        .hero h1 span.gc-touch-reveal::before{transform-origin:left;animation:gc-mobile-marker 850ms ease-out}
+      }
+    }
+    @keyframes gc-mobile-colour{0%,100%{background-color:transparent}35%,60%{background-color:var(--yellow)}}
+    @keyframes gc-mobile-underline{0%,100%{background-size:0 32%}35%,60%{background-size:100% 32%}}
+    @keyframes gc-mobile-marker{from{transform:rotate(-.4deg) scaleX(0)}to{transform:rotate(-.4deg) scaleX(1)}}
+  `;
+  document.head.appendChild(styles);
+  const selector = '.hero h1 span,.path-card,.recent-item:not(.is-latest),.story-list article,.feature-title-link,.hub-grid>a,.explainer-grid>a,.territory-grid>a,.article-thread a,.route-links a,.connection-map a';
+  const seen = new WeakSet();
+  let observer = null;
+  let feedObserver = null;
+  let pressed = null;
+  let pressTimer = null;
+  let startX = 0;
+  let startY = 0;
+  let pointerId = null;
+  const clearPress = () => {
+    window.clearTimeout(pressTimer);
+    pressed?.classList.remove('gc-touch-pressed');
+    pressed = null;
+    pointerId = null;
+  };
+  const observeElements = () => {
+    document.querySelectorAll(selector).forEach((element) => {
+      if (!seen.has(element)) observer?.observe(element);
+    });
+  };
+  const syncMotion = () => {
+    observer?.disconnect();
+    feedObserver?.disconnect();
+    observer = null;
+    feedObserver = null;
+    document.querySelectorAll('.gc-touch-reveal').forEach((element) => element.classList.remove('gc-touch-reveal'));
+    clearPress();
+    if (!touch.matches || reduced.matches || !('IntersectionObserver' in window)) return;
+    observer = new IntersectionObserver((entries) => {
+      if (!observer || !touch.matches || reduced.matches) return;
+      entries.forEach(({target, isIntersecting, intersectionRatio}) => {
+        if (!isIntersecting || intersectionRatio < 0.3 || seen.has(target)) return;
+        seen.add(target);
+        observer.unobserve(target);
+        target.classList.add('gc-touch-reveal');
+        window.setTimeout(() => target.classList.remove('gc-touch-reveal'), 1150);
+      });
+    }, {threshold: 0.3});
+    observeElements();
+    const feed = document.querySelector('[data-recent-list]');
+    if (feed && 'MutationObserver' in window) {
+      feedObserver = new MutationObserver((records) => {
+        records.forEach((record) => record.removedNodes.forEach((node) => {
+          if (node.nodeType === 1) observer?.unobserve(node);
+        }));
+        observeElements();
+      });
+      feedObserver.observe(feed, {childList: true});
+    }
+  };
+  // Passive pointer handlers never cancel scrolling, clicks or link navigation.
+  document.addEventListener('pointerdown', (event) => {
+    if (!touch.matches || event.pointerType !== 'touch' || event.isPrimary === false) return;
+    clearPress();
+    const link = event.target.closest?.('a[href],button');
+    if (!link || link.disabled) return;
+    pressed = link.closest('.story-list article') || link;
+    startX = event.clientX;
+    startY = event.clientY;
+    pointerId = event.pointerId;
+    pressed.classList.add('gc-touch-pressed');
+    pressTimer = window.setTimeout(clearPress, 1500);
+  }, {passive: true});
+  document.addEventListener('pointermove', (event) => {
+    if (pressed && event.pointerId === pointerId && Math.hypot(event.clientX - startX, event.clientY - startY) > 10) clearPress();
+  }, {passive: true});
+  document.addEventListener('pointerup', (event) => {
+    if (event.pointerId !== pointerId) return;
+    window.clearTimeout(pressTimer);
+    pressTimer = window.setTimeout(clearPress, 120);
+  }, {passive: true});
+  document.addEventListener('pointercancel', clearPress, {passive: true});
+  window.addEventListener('pagehide', clearPress);
+  document.addEventListener('visibilitychange', () => { if (document.hidden) clearPress(); });
+  touch.addEventListener('change', syncMotion);
+  reduced.addEventListener('change', syncMotion);
+  syncMotion();
+})();
