@@ -309,7 +309,7 @@ googleTagScript.async = true;
 googleTagScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
 document.head.appendChild(googleTagScript);
 
-// Mobile colour feedback: quiet, persistent underline; no touch or card flashes.
+// Mobile colour feedback v2: all sections, explicit touch modality, no flashes.
 (() => {
   const touch = window.matchMedia('(hover: none) and (pointer: coarse)');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -318,26 +318,31 @@ document.head.appendChild(googleTagScript);
   styles.textContent = `
     @media (hover:none) and (pointer:coarse) {
       a[href],button{-webkit-tap-highlight-color:rgba(17,17,17,.08)}
-      body .path-card:hover:not(:focus-visible),
-      body .recent-item:not(.is-latest):hover:not(:focus-visible),
-      body .hub-grid>a:hover:not(:focus-visible),
-      body .explainer-grid a:hover:not(:focus-visible),
-      body .territory-grid a:hover:not(:focus-visible),
-      body .article-thread a:hover:not(:focus-visible),
-      body .route-links a:hover:not(:focus-visible),
-      body .connection-map a:hover:not(:focus-visible),
-      body .feature-card .feature-link:hover:not(:focus-visible),
-      body .recent-feed-all:hover:not(:focus-visible),
-      body .site-header nav a:hover:not(:focus-visible),
-      body .button:not(.button-dark):hover:not(:focus-visible){background-color:transparent;outline:none}
-      body .story-list article:not(:has(:focus-visible)):is(:hover,:focus-within){background-color:transparent}
-      body .story-list article:not(:has(:focus-visible)):is(:hover,:focus-within)>a,
-      body .recent-item:hover:not(:focus-visible) .recent-arrow{transform:none}
-      body .button-dark:hover:not(:focus-visible),
-      body .hub-load-more:hover:not(:focus-visible){background-color:var(--ink);color:var(--paper);outline:none}
-      body .rabbit-list a:hover:not(:focus-visible){color:inherit}
-      body .library-page .hub-filters button:not([aria-pressed="true"]):not(.is-active):hover:not(:focus-visible){background-color:transparent;transform:none}
-      body .feature-card h3 .feature-title-link:hover:not(:focus-visible):not(.gc-mobile-underlined){background-size:0 32%}
+      html.gc-touch-input body .path-card:is(:hover,:focus-visible,:active),
+      html.gc-touch-input body .recent-item:not(.is-latest):is(:hover,:focus-visible,:active),
+      html.gc-touch-input body .hub-grid>a:is(:hover,:focus-visible,:active),
+      html.gc-touch-input body .explainer-grid a:is(:hover,:focus-visible,:active),
+      html.gc-touch-input body .territory-grid a:is(:hover,:focus-visible,:active),
+      html.gc-touch-input body .article-thread a:is(:hover,:focus-visible,:active),
+      html.gc-touch-input body .route-links a:is(:hover,:focus-visible,:active),
+      html.gc-touch-input body .connection-map a:is(:hover,:focus-visible,:active),
+      html.gc-touch-input body .feature-card .feature-link:is(:hover,:focus-visible,:active),
+      html.gc-touch-input body .recent-feed-all:is(:hover,:focus-visible,:active),
+      html.gc-touch-input body .site-header nav a:is(:hover,:focus-visible,:active),
+      html.gc-touch-input body .button:not(.button-dark):is(:hover,:focus-visible,:active){background-color:transparent;outline:none}
+      html.gc-touch-input body .story-list article:is(:hover,:focus-visible,:focus-within,:active){background-color:transparent}
+      html.gc-touch-input body .story-list article:is(:hover,:focus-visible,:focus-within,:active)>a,
+      html.gc-touch-input body .recent-item:is(:hover,:focus-visible,:active) .recent-arrow{transform:none}
+      html.gc-touch-input body .button-dark:is(:hover,:focus-visible,:active),
+      html.gc-touch-input body .hub-load-more:is(:hover,:focus-visible,:active){background-color:var(--ink);color:var(--paper);outline:none}
+      html.gc-touch-input body .rabbit-list a:is(:hover,:focus-visible,:active){color:inherit}
+      html.gc-touch-input body .site-footer a:is(:hover,:focus-visible,:active),
+      html.gc-touch-input body .mobile-menu a:is(:hover,:focus-visible,:active){background-color:transparent;color:inherit}
+      html.gc-touch-input body .site-footer .site-social-link:is(:hover,:focus-visible,:active){border-color:rgba(244,240,231,.45)}
+      html.gc-touch-input body .thread-grid a:is(:hover,:focus-visible,:active){background-color:transparent;color:inherit}
+      html.gc-touch-input body .hub-filter:not([aria-pressed="true"]):not(.is-active):is(:hover,:focus-visible,:active){background-color:transparent}
+      html.gc-touch-input body .library-page .hub-filters button:not([aria-pressed="true"]):not(.is-active):is(:hover,:focus-visible,:active){background-color:transparent;transform:none}
+      html.gc-touch-input body .feature-card h3 .feature-title-link:is(:hover,:focus-visible,:active):not(.gc-mobile-underlined){background-size:0 32%}
       body .feature-card h3 .feature-title-link.gc-mobile-underlined{background-size:100% 32%;transition:background-size 900ms ease-out}
     }
     @media (prefers-reduced-motion:reduce) {
@@ -345,6 +350,17 @@ document.head.appendChild(googleTagScript);
     }
   `;
   document.head.appendChild(styles);
+  // Touch focus must not be confused with keyboard focus on Safari.
+  const root = document.documentElement;
+  root.classList.toggle('gc-touch-input', touch.matches);
+  document.addEventListener('pointerdown', (event) => {
+    root.classList.toggle('gc-touch-input', event.pointerType === 'touch');
+  }, {passive: true});
+  document.addEventListener('keydown', (event) => {
+    if (['Tab', 'ArrowUp', 'ArrowDown', 'ArrowLeft', 'ArrowRight'].includes(event.key)) {
+      root.classList.remove('gc-touch-input');
+    }
+  });
   let observer = null;
   const syncMotion = () => {
     observer?.disconnect();
@@ -360,7 +376,10 @@ document.head.appendChild(googleTagScript);
     }, {threshold: 0.5});
     document.querySelectorAll('.feature-title-link:not(.gc-mobile-underlined)').forEach((element) => observer.observe(element));
   };
-  touch.addEventListener('change', syncMotion);
+  touch.addEventListener('change', () => {
+    root.classList.toggle('gc-touch-input', touch.matches);
+    syncMotion();
+  });
   reduced.addEventListener('change', syncMotion);
   syncMotion();
 })();

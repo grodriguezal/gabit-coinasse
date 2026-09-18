@@ -4,6 +4,7 @@ from html import escape, unescape
 from html.parser import HTMLParser
 from urllib.parse import urljoin, urlparse
 import json
+import hashlib
 import re
 import struct
 import xml.etree.ElementTree as ET
@@ -42,6 +43,13 @@ def dimensions(path):
 
 def enrich(path, overrides):
     text = path.read_text()
+    # Content-addressed shared JS prevents stale mobile interactions after deployment.
+    script_version = hashlib.sha256(Path('script.js').read_bytes()).hexdigest()[:12]
+    text = re.sub(
+        r"""(<script\b[^>]*\bsrc=["'])((?:\.\./)*|/)?script\.js(?:\?[^"']*)?(["'])""",
+        lambda m: m[1] + (m[2] or '') + 'script.js?v=' + script_version + m[3],
+        text,
+    )
     text = re.sub(r'\n?<!-- SEO:START -->.*?<!-- SEO:END -->\n?', '', text, flags=re.S)
     tags = Tags(text).tags
     if any(t == 'meta' and a.get('name') == 'robots' and 'noindex' in a.get('content', '') for t, a in tags): return None
@@ -129,3 +137,4 @@ def main():
     print(f'SEO enriched: {len(urls)} indexable pages')
 
 if __name__ == '__main__': main()
+
