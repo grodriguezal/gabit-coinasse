@@ -309,7 +309,7 @@ googleTagScript.async = true;
 googleTagScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
 document.head.appendChild(googleTagScript);
 
-// Mobile colour feedback: one reveal per element, native one-tap navigation.
+// Mobile colour feedback: quiet, persistent underline; no touch or card flashes.
 (() => {
   const touch = window.matchMedia('(hover: none) and (pointer: coarse)');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -317,94 +317,49 @@ document.head.appendChild(googleTagScript);
   styles.id = 'gabit-mobile-colour';
   styles.textContent = `
     @media (hover:none) and (pointer:coarse) {
-      a[href],button{-webkit-tap-highlight-color:rgba(255,212,0,.28)}
-      .gc-touch-pressed{background-color:var(--yellow)!important;color:var(--ink)!important;animation:none!important}
-      @media (prefers-reduced-motion:no-preference) {
-        .gc-touch-reveal{animation:gc-mobile-colour 1050ms ease-out}
-        .feature-card h3 .feature-title-link.gc-touch-reveal{animation:gc-mobile-underline 1050ms ease-out}
-        .hero h1 span.gc-touch-reveal{animation:none}
-        .hero h1 span.gc-touch-reveal::before{transform-origin:left;animation:gc-mobile-marker 850ms ease-out}
-      }
+      a[href],button{-webkit-tap-highlight-color:rgba(17,17,17,.08)}
+      body .path-card:hover:not(:focus-visible),
+      body .recent-item:not(.is-latest):hover:not(:focus-visible),
+      body .hub-grid>a:hover:not(:focus-visible),
+      body .explainer-grid a:hover:not(:focus-visible),
+      body .territory-grid a:hover:not(:focus-visible),
+      body .article-thread a:hover:not(:focus-visible),
+      body .route-links a:hover:not(:focus-visible),
+      body .connection-map a:hover:not(:focus-visible),
+      body .feature-card .feature-link:hover:not(:focus-visible),
+      body .recent-feed-all:hover:not(:focus-visible),
+      body .site-header nav a:hover:not(:focus-visible),
+      body .button:not(.button-dark):hover:not(:focus-visible){background-color:transparent;outline:none}
+      body .story-list article:not(:has(:focus-visible)):is(:hover,:focus-within){background-color:transparent}
+      body .story-list article:not(:has(:focus-visible)):is(:hover,:focus-within)>a,
+      body .recent-item:hover:not(:focus-visible) .recent-arrow{transform:none}
+      body .button-dark:hover:not(:focus-visible),
+      body .hub-load-more:hover:not(:focus-visible){background-color:var(--ink);color:var(--paper);outline:none}
+      body .rabbit-list a:hover:not(:focus-visible){color:inherit}
+      body .library-page .hub-filters button:not([aria-pressed="true"]):not(.is-active):hover:not(:focus-visible){background-color:transparent;transform:none}
+      body .feature-card h3 .feature-title-link:hover:not(:focus-visible):not(.gc-mobile-underlined){background-size:0 32%}
+      body .feature-card h3 .feature-title-link.gc-mobile-underlined{background-size:100% 32%;transition:background-size 900ms ease-out}
     }
-    @keyframes gc-mobile-colour{0%,100%{background-color:transparent}35%,60%{background-color:var(--yellow)}}
-    @keyframes gc-mobile-underline{0%,100%{background-size:0 32%}35%,60%{background-size:100% 32%}}
-    @keyframes gc-mobile-marker{from{transform:rotate(-.4deg) scaleX(0)}to{transform:rotate(-.4deg) scaleX(1)}}
+    @media (prefers-reduced-motion:reduce) {
+      body .feature-card h3 .feature-title-link.gc-mobile-underlined{transition:none}
+    }
   `;
   document.head.appendChild(styles);
-  const selector = '.hero h1 span,.path-card,.recent-item:not(.is-latest),.story-list article,.feature-title-link,.hub-grid>a,.explainer-grid>a,.territory-grid>a,.article-thread a,.route-links a,.connection-map a';
-  const seen = new WeakSet();
   let observer = null;
-  let feedObserver = null;
-  let pressed = null;
-  let pressTimer = null;
-  let startX = 0;
-  let startY = 0;
-  let pointerId = null;
-  const clearPress = () => {
-    window.clearTimeout(pressTimer);
-    pressed?.classList.remove('gc-touch-pressed');
-    pressed = null;
-    pointerId = null;
-  };
-  const observeElements = () => {
-    document.querySelectorAll(selector).forEach((element) => {
-      if (!seen.has(element)) observer?.observe(element);
-    });
-  };
   const syncMotion = () => {
     observer?.disconnect();
-    feedObserver?.disconnect();
     observer = null;
-    feedObserver = null;
-    document.querySelectorAll('.gc-touch-reveal').forEach((element) => element.classList.remove('gc-touch-reveal'));
-    clearPress();
     if (!touch.matches || reduced.matches || !('IntersectionObserver' in window)) return;
     observer = new IntersectionObserver((entries) => {
       if (!observer || !touch.matches || reduced.matches) return;
       entries.forEach(({target, isIntersecting, intersectionRatio}) => {
-        if (!isIntersecting || intersectionRatio < 0.3 || seen.has(target)) return;
-        seen.add(target);
+        if (!isIntersecting || intersectionRatio < 0.5) return;
+        target.classList.add('gc-mobile-underlined');
         observer.unobserve(target);
-        target.classList.add('gc-touch-reveal');
-        window.setTimeout(() => target.classList.remove('gc-touch-reveal'), 1150);
       });
-    }, {threshold: 0.3});
-    observeElements();
-    const feed = document.querySelector('[data-recent-list]');
-    if (feed && 'MutationObserver' in window) {
-      feedObserver = new MutationObserver((records) => {
-        records.forEach((record) => record.removedNodes.forEach((node) => {
-          if (node.nodeType === 1) observer?.unobserve(node);
-        }));
-        observeElements();
-      });
-      feedObserver.observe(feed, {childList: true});
-    }
+    }, {threshold: 0.5});
+    document.querySelectorAll('.feature-title-link:not(.gc-mobile-underlined)').forEach((element) => observer.observe(element));
   };
-  // Passive pointer handlers never cancel scrolling, clicks or link navigation.
-  document.addEventListener('pointerdown', (event) => {
-    if (!touch.matches || event.pointerType !== 'touch' || event.isPrimary === false) return;
-    clearPress();
-    const link = event.target.closest?.('a[href],button');
-    if (!link || link.disabled) return;
-    pressed = link.closest('.story-list article') || link;
-    startX = event.clientX;
-    startY = event.clientY;
-    pointerId = event.pointerId;
-    pressed.classList.add('gc-touch-pressed');
-    pressTimer = window.setTimeout(clearPress, 1500);
-  }, {passive: true});
-  document.addEventListener('pointermove', (event) => {
-    if (pressed && event.pointerId === pointerId && Math.hypot(event.clientX - startX, event.clientY - startY) > 10) clearPress();
-  }, {passive: true});
-  document.addEventListener('pointerup', (event) => {
-    if (event.pointerId !== pointerId) return;
-    window.clearTimeout(pressTimer);
-    pressTimer = window.setTimeout(clearPress, 120);
-  }, {passive: true});
-  document.addEventListener('pointercancel', clearPress, {passive: true});
-  window.addEventListener('pagehide', clearPress);
-  document.addEventListener('visibilitychange', () => { if (document.hidden) clearPress(); });
   touch.addEventListener('change', syncMotion);
   reduced.addEventListener('change', syncMotion);
   syncMotion();
