@@ -104,6 +104,9 @@ def enrich(path, overrides):
             meta += [('property', 'og:image:width', str(lead_image['size'][0])), ('property', 'og:image:height', str(lead_image['size'][1]))]
     existing_meta = {a.get('name', a.get('property')) for t, a in tags if t == 'meta'}
     extra = ['<!-- SEO:START -->']
+    # HTML height attributes must not fix the rendered height when CSS scales width.
+    # Keep this low-specificity so intentional component crops (height:100%) survive.
+    extra.append('<style id="seo-responsive-images">img { height: auto; }</style>')
     if 'robots' not in existing_meta: extra.append('<meta name="robots" content="index,follow,max-image-preview:large">')
     for kind, name, value in meta:
         if name not in existing_meta: extra.append(f'<meta {kind}="{name}" content="{escape(value, quote=True)}">')
