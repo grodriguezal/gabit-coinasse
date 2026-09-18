@@ -1,0 +1,184 @@
+{
+  "index.html": {
+    "title": "Economía y dinero explicados sin jerga — Gabit Coinasse"
+  },
+  "articulos/index.html": {
+    "title": "Artículos de economía, dinero y mercados — Gabit Coinasse"
+  },
+  "dinero/index.html": {
+    "title": "Dinero: inflación, bancos y sistema monetario — Gabit Coinasse",
+    "description": "Entiende qué es el dinero, cómo lo crean los bancos y por qué pierde valor. Guías sobre inflación, tipos de interés, oro, Bitcoin y stablecoins."
+  },
+  "economia/index.html": {
+    "title": "Economía: productividad, vivienda y salarios — Gabit Coinasse"
+  },
+  "mercados/index.html": {
+    "title": "Mercados: bolsa, bonos, ETF y riesgos — Gabit Coinasse"
+  },
+  "poder/index.html": {
+    "title": "Poder económico: deuda, impuestos y gobiernos — Gabit Coinasse"
+  },
+  "empieza-aqui/index.html": {
+    "title": "Aprender economía desde cero: por dónde empezar — Gabit Coinasse"
+  },
+  "sobre/manifiesto/index.html": {
+    "title": "Gabit Coinasse: manifiesto y criterio editorial — Gabit Coinasse"
+  },
+  "dinero/como-funciona-el-dinero-moderno/index.html": {
+    "title": "Cómo funciona el dinero moderno: bancos, fiat y oro — Gabit Coinasse"
+  },
+  "dinero/que-es-el-dinero/index.html": {
+    "title": "Qué es el dinero y cómo funciona — Gabit Coinasse",
+    "description": "Qué es el dinero, para qué sirve y qué diferencia hay entre efectivo, depósitos y reservas bancarias. Una explicación con ejemplos cotidianos."
+  },
+  "dinero/por-que-tu-dinero-compra-menos/index.html": {
+    "title": "Qué es la inflación y por qué tu dinero compra menos — Gabit Coinasse",
+    "description": "Qué es la inflación, por qué suben los precios y cómo cambia tu poder adquisitivo. Demanda, oferta, dinero y salarios explicados con ejemplos."
+  },
+  "dinero/que-es-el-interes-compuesto/index.html": {
+    "title": "Interés compuesto: cómo funciona y por qué importa — Gabit Coinasse"
+  },
+  "dinero/que-son-los-tipos-de-interes/index.html": {
+    "title": "Tipos de interés: qué son y cómo te afectan — Gabit Coinasse",
+    "description": "Qué son los tipos de interés, cómo se forman y por qué afectan a préstamos, ahorro, hipotecas y precios de los activos. Explicado sin jerga."
+  },
+  "dinero/quien-crea-realmente-el-dinero/index.html": {
+    "title": "Cómo crean dinero los bancos comerciales — Gabit Coinasse",
+    "description": "Cómo un préstamo bancario crea un depósito, qué limita a los bancos y por qué crear dinero no equivale a crear riqueza. Balances y ejemplos claros."
+  },
+  "dinero/por-que-el-oro-nos-obsesiona/index.html": {
+    "title": "Por qué el oro se usa como reserva de valor — Gabit Coinasse",
+    "description": "Por qué el oro ha servido como dinero y reserva de valor: escasez, durabilidad, confianza y redes de aceptación. Su papel monetario explicado."
+  },
+  "dinero/por-que-21-millones-bitcoin/index.html": {
+    "title": "Por qué Bitcoin tiene un límite de 21 millones — Gabit Coinasse",
+    "description": "Cómo funciona el límite de 21 millones de Bitcoin, qué papel tienen el halving y los nodos y por qué una oferta limitada no garantiza su valor."
+  },
+  "dinero/que-hace-realmente-un-banco-central/index.html": {
+    "title": "Qué hace un banco central: tipos y liquidez — Gabit Coinasse"
+  },
+  "dinero/oro-tokenizado-vs-bitcoin/index.html": {
+    "title": "Oro tokenizado vs. Bitcoin: diferencias y riesgos — Gabit Coinasse"
+  },
+  "dinero/que-es-el-debasement-trade/index.html": {
+    "title": "Qué es el debasement trade: oro, Bitcoin e inflación — Gabit Coinasse"
+  },
+  "dinero/que-pasaria-si-volvieramos-patron-oro/index.html": {
+    "title": "Qué pasaría si volviéramos al patrón oro — Gabit Coinasse"
+  },
+  "dinero/que-pasaria-si-separamos-dinero-del-estado/index.html": {
+    "title": "Qué pasaría si separáramos el dinero del Estado — Gabit Coinasse"
+  },
+  "economia/comprar-casa-tipos-credito-precios/index.html": {
+    "title": "Cómo afectan los tipos de interés a la vivienda — Gabit Coinasse",
+    "description": "Por qué los tipos de interés cambian las cuotas hipotecarias, el acceso al crédito y la demanda de vivienda. El precio de una casa no lo cuenta todo."
+  },
+  "economia/que-es-la-productividad/index.html": {
+    "title": "Qué es la productividad y cómo afecta a los salarios — Gabit Coinasse"
+  },
+  "economia/ia-productividad-salarios-desigualdad/index.html": {
+    "title": "IA, productividad y salarios: quién gana y quién pierde — Gabit Coinasse"
+  },
+  "economia/ia-inversion-productividad-economia/index.html": {
+    "title": "Cómo la inversión en IA está moviendo la economía — Gabit Coinasse"
+  },
+  "economia/por-que-bolsa-deuda-suben-mas-que-sueldos/index.html": {
+    "title": "Por qué la bolsa y la deuda crecen más que los sueldos — Gabit Coinasse"
+  },
+  "economia/por-que-estados-unidos-no-pagara-toda-su-deuda/index.html": {
+    "title": "Por qué Estados Unidos no necesita pagar toda su deuda — Gabit Coinasse"
+  },
+  "economia/por-que-suben-intereses-deuda-mundo/index.html": {
+    "title": "Por qué suben los intereses de la deuda pública — Gabit Coinasse"
+  },
+  "economia/quien-pagara-tu-pension/index.html": {
+    "title": "Quién pagará tu pensión: cómo funciona el reparto — Gabit Coinasse"
+  },
+  "historia/que-paso-en-1971/index.html": {
+    "title": "Qué pasó en 1971: Nixon, el dólar y el patrón oro — Gabit Coinasse",
+    "description": "Qué hizo Nixon en 1971 al suspender la convertibilidad del dólar en oro, cómo funcionaba Bretton Woods y qué cambió en el sistema monetario."
+  },
+  "mercados/carry-trade-japones-explicado/index.html": {
+    "title": "Carry trade japonés: cómo funciona y por qué importa — Gabit Coinasse"
+  },
+  "mercados/como-funciona-el-mercado-repo/index.html": {
+    "title": "Qué es el mercado repo y cómo funciona — Gabit Coinasse"
+  },
+  "mercados/invertir-en-bolsa-no-es-apostar-a-una-linea/index.html": {
+    "title": "Cómo funciona invertir en bolsa: empresas y expectativas — Gabit Coinasse"
+  },
+  "mercados/por-que-diversificar-no-es-cobardia/index.html": {
+    "title": "Diversificación: qué es y qué riesgos reduce — Gabit Coinasse"
+  },
+  "mercados/por-que-intentar-acertar-el-momento-es-tan-dificil/index.html": {
+    "title": "Market timing: por qué acertar el momento es tan difícil — Gabit Coinasse"
+  },
+  "mercados/por-que-las-comisiones-importan/index.html": {
+    "title": "Cómo afectan las comisiones a tu inversión — Gabit Coinasse"
+  },
+  "mercados/por-que-una-curva-invertida-pone-nervioso-a-wall-street/index.html": {
+    "title": "Curva de tipos invertida: qué significa y qué anticipa — Gabit Coinasse"
+  },
+  "mercados/por-que-wall-street-cae-cuando-empleo-sale-bien/index.html": {
+    "title": "Por qué la bolsa cae cuando los datos de empleo son buenos — Gabit Coinasse"
+  },
+  "mercados/que-es-el-eurodolar/index.html": {
+    "title": "Qué es el eurodólar: dólares fuera de Estados Unidos — Gabit Coinasse"
+  },
+  "mercados/que-es-el-per/index.html": {
+    "title": "Qué es el PER y cómo interpretar una acción barata — Gabit Coinasse"
+  },
+  "mercados/que-es-el-riesgo-al-invertir/index.html": {
+    "title": "Riesgo al invertir: tipos y qué puede salir mal — Gabit Coinasse"
+  },
+  "mercados/que-es-la-capitalizacion-bursatil/index.html": {
+    "title": "Capitalización bursátil: qué es y cómo se calcula — Gabit Coinasse"
+  },
+  "mercados/que-es-la-renta-fija/index.html": {
+    "title": "Qué es la renta fija y qué riesgos tiene — Gabit Coinasse"
+  },
+  "mercados/que-es-la-renta-variable/index.html": {
+    "title": "Qué es la renta variable y cómo funciona — Gabit Coinasse"
+  },
+  "mercados/que-es-la-volatilidad/index.html": {
+    "title": "Qué es la volatilidad y cómo afecta a una inversión — Gabit Coinasse"
+  },
+  "mercados/que-es-un-bono/index.html": {
+    "title": "Qué es un bono: intereses, precio y riesgo — Gabit Coinasse",
+    "description": "Qué compras al comprar un bono: una promesa de pago con intereses y vencimiento. Cómo se relacionan precio, rentabilidad y riesgo de impago."
+  },
+  "mercados/que-es-un-broker/index.html": {
+    "title": "Qué es un broker: funciones, costes e incentivos — Gabit Coinasse"
+  },
+  "mercados/que-es-un-etf/index.html": {
+    "title": "Qué es un ETF y qué riesgos puede esconder — Gabit Coinasse"
+  },
+  "mercados/que-es-un-fondo-indexado/index.html": {
+    "title": "Qué es un fondo indexado y cómo funciona — Gabit Coinasse"
+  },
+  "mercados/que-es-un-indice-bursatil/index.html": {
+    "title": "Qué es un índice bursátil y cómo se calcula — Gabit Coinasse"
+  },
+  "mercados/que-son-los-dividendos/index.html": {
+    "title": "Qué son los dividendos y por qué no son dinero gratis — Gabit Coinasse"
+  },
+  "mercados/renta-fija-vs-renta-variable/index.html": {
+    "title": "Renta fija vs. renta variable: diferencias y riesgos — Gabit Coinasse"
+  },
+  "mercados/tesis-inversion-plata/index.html": {
+    "title": "Invertir en plata: oferta, demanda y riesgos de la tesis — Gabit Coinasse"
+  },
+  "poder/como-puede-un-pais-gastar-dinero-que-no-tiene/index.html": {
+    "title": "Déficit público: cómo gasta un país más de lo que ingresa — Gabit Coinasse",
+    "description": "Qué es el déficit público y cómo se financia con deuda. Sigue el recorrido del dinero cuando un Estado gasta más de lo que ingresa."
+  },
+  "poder/como-puede-europa-congelar-reservas-rusia/index.html": {
+    "title": "Cómo puede Europa congelar las reservas de Rusia — Gabit Coinasse"
+  },
+  "poder/por-que-gobierno-subsidia-empresas/index.html": {
+    "title": "Por qué los gobiernos subvencionan empresas privadas — Gabit Coinasse"
+  },
+  "poder/puede-mercado-bonos-obligar-gobierno-cambiar-plan/index.html": {
+    "title": "Bond vigilantes: cómo los bonos presionan a un gobierno — Gabit Coinasse"
+  }
+}
