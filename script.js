@@ -347,6 +347,12 @@ document.head.appendChild(googleTagScript);
     }
     @media (hover:none) and (pointer:coarse) and (prefers-reduced-motion:no-preference) {
       .gc-reading-highlight{animation:gc-reading-yellow 1500ms ease-in-out}
+      .rabbit .gc-reading-highlight,
+      .site-footer .gc-reading-highlight{animation-name:gc-reading-text}
+    }
+    @keyframes gc-reading-text {
+      0%,100%{background-color:transparent;color:inherit}
+      35%,65%{background-color:transparent;color:var(--yellow)}
     }
     @keyframes gc-reading-yellow {
       0%,100%{background-color:transparent;color:inherit}
