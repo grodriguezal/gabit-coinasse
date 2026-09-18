@@ -309,7 +309,7 @@ googleTagScript.async = true;
 googleTagScript.src = `https://www.googletagmanager.com/gtag/js?id=${GA_MEASUREMENT_ID}`;
 document.head.appendChild(googleTagScript);
 
-// Mobile colour feedback v2: all sections, explicit touch modality, no flashes.
+// Mobile colour feedback v3: reading reveals only; touch hover remains disabled.
 (() => {
   const touch = window.matchMedia('(hover: none) and (pointer: coarse)');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
@@ -345,6 +345,13 @@ document.head.appendChild(googleTagScript);
       html.gc-touch-input body .feature-card h3 .feature-title-link:is(:hover,:focus-visible,:active):not(.gc-mobile-underlined){background-size:0 32%}
       body .feature-card h3 .feature-title-link.gc-mobile-underlined{background-size:100% 32%;transition:background-size 900ms ease-out}
     }
+    @media (hover:none) and (pointer:coarse) and (prefers-reduced-motion:no-preference) {
+      .gc-reading-highlight{animation:gc-reading-yellow 1500ms ease-in-out}
+    }
+    @keyframes gc-reading-yellow {
+      0%,100%{background-color:transparent;color:inherit}
+      35%,65%{background-color:var(--yellow);color:var(--ink)}
+    }
     @media (prefers-reduced-motion:reduce) {
       body .feature-card h3 .feature-title-link.gc-mobile-underlined{transition:none}
     }
@@ -361,20 +368,47 @@ document.head.appendChild(googleTagScript);
       root.classList.remove('gc-touch-input');
     }
   });
+  const readingSelector = '.feature-title-link,.path-card,.recent-item:not(.is-latest),.story-list article,.hub-grid>a,.explainer-grid>a,.territory-grid>a,.article-thread a,.route-links a,.connection-map a,.thread-grid a,.rabbit-list a,.site-footer>div>a';
+  const seen = new WeakSet();
   let observer = null;
+  let feedObserver = null;
+  const registerReadingElements = () => {
+    document.querySelectorAll(readingSelector).forEach((element) => {
+      if (!seen.has(element)) observer?.observe(element);
+    });
+  };
   const syncMotion = () => {
     observer?.disconnect();
+    feedObserver?.disconnect();
     observer = null;
+    feedObserver = null;
+    document.querySelectorAll('.gc-reading-highlight').forEach((element) => element.classList.remove('gc-reading-highlight'));
     if (!touch.matches || reduced.matches || !('IntersectionObserver' in window)) return;
     observer = new IntersectionObserver((entries) => {
       if (!observer || !touch.matches || reduced.matches) return;
       entries.forEach(({target, isIntersecting, intersectionRatio}) => {
-        if (!isIntersecting || intersectionRatio < 0.5) return;
-        target.classList.add('gc-mobile-underlined');
+        if (!isIntersecting || intersectionRatio < 0.3 || seen.has(target)) return;
+        seen.add(target);
         observer.unobserve(target);
+        if (target.matches('.feature-title-link')) {
+          target.classList.add('gc-mobile-underlined');
+        } else {
+          target.classList.add('gc-reading-highlight');
+          window.setTimeout(() => target.classList.remove('gc-reading-highlight'), 1600);
+        }
       });
-    }, {threshold: 0.5});
-    document.querySelectorAll('.feature-title-link:not(.gc-mobile-underlined)').forEach((element) => observer.observe(element));
+    }, {threshold: 0.3});
+    registerReadingElements();
+    const feed = document.querySelector('[data-recent-list]');
+    if (feed && 'MutationObserver' in window) {
+      feedObserver = new MutationObserver((records) => {
+        records.forEach((record) => record.removedNodes.forEach((node) => {
+          if (node.nodeType === 1) observer?.unobserve(node);
+        }));
+        registerReadingElements();
+      });
+      feedObserver.observe(feed, {childList:true});
+    }
   };
   touch.addEventListener('change', () => {
     root.classList.toggle('gc-touch-input', touch.matches);
