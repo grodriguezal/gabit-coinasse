@@ -19,7 +19,7 @@ TONE_RULES = [
 
 NEW_POST_PATH = "poder/estado-bienestar-deuda-democracia-futuro/"
 NEW_POST_TITLE = "EL ESTADO TE PROMETE EL PRESENTE. ¿QUIÉN PAGA EL FUTURO?"
-NEW_POST_MINUTES = 18
+NEW_POST_MINUTES = 10
 NEW_POST_META = f"RABBIT HOLE · PODER · ECONOMÍA · DINERO · {NEW_POST_MINUTES} MIN · NUEVO"
 NEW_POST_DECK = "Pensiones, sanidad, impuestos y deuda: el problema no es querer servicios públicos, sino separar políticamente la promesa de su precio."
 
@@ -45,7 +45,6 @@ def clean_editorial_tone():
 
 
 def integrate_latest_post():
-    # Keep the editorial reading-time label consistent everywhere the piece is surfaced.
     label_pattern = re.compile(r"RABBIT HOLE · PODER · ECONOMÍA · DINERO · \d+ MIN(?: · NUEVO)?")
     for path in [Path(NEW_POST_PATH) / "index.html", Path("index.html"), Path("articulos/index.html"), Path("poder/index.html")]:
         if path.exists():
