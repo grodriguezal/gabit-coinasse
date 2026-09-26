@@ -14,6 +14,75 @@ if (existingFavicons.length) {
   document.head.appendChild(favicon);
 }
 
+// Editorial tone guardrail — direct and irreverent, never vulgar.
+const cleanEditorialText = (value = '') => value
+  .replace(/EXPLÍCAME ESTA MIERDA/gi, 'EXPLÍCAMELO SIN VUELTAS')
+  .replace(/NO TIENES NI PUTA IDEA DE POR DÓNDE EMPEZAR/gi, 'NO SABES NI POR DÓNDE EMPEZAR')
+  .replace(/¿CÓMO FUNCIONA ESTA MIERDA\?/gi, '¿CÓMO FUNCIONA TODO ESTO?')
+  .replace(/\bcoño\b/gi, '')
+  .replace(/\bcarajo\b/gi, '')
+  .replace(/\bputa\b/gi, '')
+  .replace(/\bjoder\b/gi, '')
+  .replace(/\bmierda\b/gi, 'esto')
+  .replace(/\s+([?.!,;:])/g, '$1')
+  .replace(/([¿¡])\s+/g, '$1')
+  .replace(/[ \t]{2,}/g, ' ')
+  .trim();
+
+const sanitizeEditorialNode = (root = document) => {
+  if (root === document || root === document.documentElement) {
+    document.title = cleanEditorialText(document.title);
+  }
+  const processElement = (element) => {
+    if (!(element instanceof Element) || element.matches('script,style')) return;
+    ['aria-label', 'title', 'placeholder'].forEach((attribute) => {
+      if (!element.hasAttribute(attribute)) return;
+      const current = element.getAttribute(attribute) || '';
+      const cleaned = cleanEditorialText(current);
+      if (cleaned !== current) element.setAttribute(attribute, cleaned);
+    });
+  };
+  if (root instanceof Element) processElement(root);
+  const walkerRoot = root === document ? document.body : root;
+  if (!walkerRoot) return;
+  const walker = document.createTreeWalker(walkerRoot, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) nodes.push(walker.currentNode);
+  nodes.forEach((node) => {
+    if (node.parentElement?.closest('script,style')) return;
+    const current = node.nodeValue || '';
+    const cleaned = cleanEditorialText(current);
+    if (cleaned !== current) node.nodeValue = cleaned;
+  });
+  if (root.querySelectorAll) root.querySelectorAll('[aria-label],[title],[placeholder]').forEach(processElement);
+};
+
+sanitizeEditorialNode(document);
+if ('MutationObserver' in window && document.body) {
+  const editorialObserver = new MutationObserver((records) => {
+    records.forEach((record) => {
+      if (record.type === 'characterData') {
+        const node = record.target;
+        if (node.parentElement?.closest('script,style')) return;
+        const current = node.nodeValue || '';
+        const cleaned = cleanEditorialText(current);
+        if (cleaned !== current) node.nodeValue = cleaned;
+        return;
+      }
+      record.addedNodes.forEach((node) => {
+        if (node.nodeType === Node.TEXT_NODE) {
+          const current = node.nodeValue || '';
+          const cleaned = cleanEditorialText(current);
+          if (cleaned !== current) node.nodeValue = cleaned;
+        } else if (node.nodeType === Node.ELEMENT_NODE) {
+          sanitizeEditorialNode(node);
+        }
+      });
+    });
+  });
+  editorialObserver.observe(document.body, { childList: true, subtree: true, characterData: true });
+}
+
 // Social channels — shared across all static page footers.
 const footerNav = document.querySelector('.site-footer > div');
 if (footerNav && !footerNav.querySelector('.site-socials')) {
@@ -131,7 +200,7 @@ if (homeHero && !document.querySelector('[data-recent-feed]')) {
 
   const recentList = recentSection.querySelector('[data-recent-list]');
   const fallbackPosts = [
-    { href: 'dinero/como-funciona-el-dinero-moderno/', meta: 'RABBIT HOLE · DINERO · ECONOMÍA · 22 MIN', title: 'TIENES DINERO. PERO ¿QUÉ COÑO TIENES REALMENTE?', summary: 'Del oro al fiat, los bancos, Bitcoin, stablecoins e inflación. Un mapa para entender qué promesa aceptas cada vez que dices “dinero”.' },
+    { href: 'dinero/como-funciona-el-dinero-moderno/', meta: 'RABBIT HOLE · DINERO · ECONOMÍA · 22 MIN', title: 'TIENES DINERO. PERO ¿QUÉ TIENES REALMENTE?', summary: 'Del oro al fiat, los bancos, Bitcoin, stablecoins e inflación. Un mapa para entender qué promesa aceptas cada vez que dices “dinero”.' },
     { href: 'mercados/tesis-inversion-plata/', meta: 'MERCADOS · DINERO · ECONOMÍA · 15 MIN', title: 'LA PLATA TIENE UN PROBLEMA: EL MUNDO LA QUIERE PARA DOS COSAS A LA VEZ', summary: 'Es activo monetario y materia prima industrial. Su mayor atractivo nace de esa doble vida. El riesgo también.' },
     { href: 'economia/quien-paga-realmente-un-arancel/', meta: 'ECONOMÍA · PODER · MERCADOS · 14 MIN', title: '¿QUIÉN PAGA REALMENTE UN ARANCEL?', summary: 'El gobierno se lo cobra al importador. La factura termina repartiéndose entre empresas, consumidores, proveedores extranjeros y productores locales.' },
     { href: 'dinero/que-pasaria-si-separamos-dinero-del-estado/', meta: 'DINERO · PODER · 15 MIN', title: '¿QUÉ PASARÍA SI MAÑANA SEPARÁRAMOS EL DINERO DEL ESTADO?', summary: 'Quitar al Estado la capacidad de crear dinero cambia quién puede emitir, rescatar y financiar.' },
@@ -161,10 +230,10 @@ if (homeHero && !document.querySelector('[data-recent-feed]')) {
         metaRow.appendChild(badge);
       }
       const title = document.createElement('h3');
-      title.textContent = post.title;
+      title.textContent = cleanEditorialText(post.title);
       const summary = document.createElement('p');
       summary.className = 'recent-summary';
-      summary.textContent = post.summary;
+      summary.textContent = cleanEditorialText(post.summary);
       copy.append(metaRow, title, summary);
       const arrow = document.createElement('b');
       arrow.className = 'recent-arrow';
