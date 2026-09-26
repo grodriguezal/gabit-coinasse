@@ -23,11 +23,11 @@ const cleanEditorialText = (value = '') => value
   .replace(/\bcarajo\b/gi, '')
   .replace(/\bputa\b/gi, '')
   .replace(/\bjoder\b/gi, '')
+  .replace(/\b(?:una|la|esta|esa)\s+mierda\b/gi, 'esto')
   .replace(/\bmierda\b/gi, 'esto')
   .replace(/\s+([?.!,;:])/g, '$1')
   .replace(/([¿¡])\s+/g, '$1')
-  .replace(/[ \t]{2,}/g, ' ')
-  .trim();
+  .replace(/[ \t]{2,}/g, ' ');
 
 const sanitizeEditorialNode = (root = document) => {
   if (root === document || root === document.documentElement) {
