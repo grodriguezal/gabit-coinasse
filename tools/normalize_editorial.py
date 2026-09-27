@@ -6,8 +6,9 @@ from datetime import date
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parents[1]
+STYLE_VERSION = "20260927-rabbit-unified"
 
-# The site uses arrows as typographic marks, never as emoji.  iOS/Safari can
+# The site uses arrows as typographic marks, never as emoji. iOS/Safari can
 # render several Unicode diagonal/boxed arrows as coloured emoji unless their
 # presentation is tightly controlled, so we normalise them to plain text
 # arrows at deploy time.
@@ -59,10 +60,16 @@ def normalise_arrows(text: str) -> tuple[str, int]:
         if hits:
             text = text.replace(source, target)
             count += hits
-    # Variation Selector-16 is what most often forces emoji presentation.
-    # Remove any orphaned selector that may remain next to a normal arrow.
     text, extra = re.subn(r"([←→↑↓])\ufe0f", r"\1", text)
     return text, count + extra
+
+
+def bust_shared_css(text: str) -> str:
+    return re.sub(
+        r'(?P<q>["\'])(?P<path>(?:\.\./)*v1\.css)(?:\?[^"\']*)?(?P=q)',
+        lambda match: f'{match.group("q")}{match.group("path")}?v={STYLE_VERSION}{match.group("q")}',
+        text,
+    )
 
 
 def plain_text(fragment: str) -> str:
@@ -156,6 +163,7 @@ def main() -> None:
             continue
         source = path.read_text(encoding="utf-8")
         updated, count = normalise_arrows(source)
+        updated = bust_shared_css(updated)
         if updated != source:
             path.write_text(updated, encoding="utf-8")
             files_changed += 1
@@ -163,12 +171,11 @@ def main() -> None:
 
     rabbit_changed = rebuild_home_rabbit_hole()
 
-    # The rebuilt Rabbit Hole block may itself contain legacy arrow variants in
-    # surrounding index.html copy, so make one final normalisation pass there.
     index_path = ROOT / "index.html"
     if index_path.exists():
         source = index_path.read_text(encoding="utf-8")
         updated, count = normalise_arrows(source)
+        updated = bust_shared_css(updated)
         if updated != source:
             index_path.write_text(updated, encoding="utf-8")
             arrow_changes += count
