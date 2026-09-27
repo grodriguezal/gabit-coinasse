@@ -15,7 +15,8 @@ def inbound(f,marker,html):
  s=p.read_text(encoding='utf-8')
  if 'tokenizacion-activos-agentes-liquidez' not in s and marker in s: p.write_text(s.replace(marker,html+marker,1),encoding='utf-8')
 def main():
- add('index.html','<div class="rabbit-list">',f'<a href="{P}">{T}<small>{M}</small></a>')
+ mh=M.replace(' · NUEVO','')
+ add('index.html','<div class="rabbit-list">',f'<a href="{P}"><span class="rabbit-title">{T}</span><small>{mh}</small></a>')
  add('articulos/index.html','<div class="hub-grid" data-hub-grid>',f'<a href="../{P}"><span>{M}</span><h2>{T}</h2><p>{D}</p><b>→</b></a>')
  add('dinero/index.html','<div class="hub-grid" data-hub-grid>',f'<a href="../{P}"><span>{M}</span><h2>{T}</h2><p>{D}</p><b>→</b></a>')
  inbound('dinero/colateral-maquina-credito-sistema-financiero/index.html','</div></div></article>','<p>El siguiente salto puede ser que ese colateral se vuelva programable: <a href="../tokenizacion-activos-agentes-liquidez/">qué ocurre si tokenización y agentes de IA pueden movilizar activos casi a velocidad de software</a>.</p>')
