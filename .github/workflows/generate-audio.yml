@@ -38,10 +38,12 @@ jobs:
 
       - name: Instalar MeloTTS y utilidades
         run: |
-          python -m pip install --upgrade pip setuptools wheel
+          python -m pip install --upgrade pip wheel
+          python -m pip install 'setuptools==80.9.0'
           git clone --depth 1 https://github.com/myshell-ai/MeloTTS.git /tmp/MeloTTS
           python -m pip install -e /tmp/MeloTTS
           python -m pip install beautifulsoup4 pydub
+          python -c "import pkg_resources; print('pkg_resources OK')"
           python -m unidic download
 
       - name: Generar MP3 del artículo
