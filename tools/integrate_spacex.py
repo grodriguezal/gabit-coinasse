@@ -7,7 +7,8 @@ def add(f,m,h):
  s=p.read_text(encoding='utf-8')
  if P not in s and m in s: p.write_text(s.replace(m,m+h,1),encoding='utf-8')
 def main():
- add('index.html','<div class="rabbit-list">',f'<a href="{P}">{T}<small>{M}</small></a>')
+ mh=M.replace(' · NUEVO','')
+ add('index.html','<div class="rabbit-list">',f'<a href="{P}"><span class="rabbit-title">{T}</span><small>{mh}</small></a>')
  add('articulos/index.html','<div class="hub-grid" data-hub-grid>',f'<a href="../{P}"><span>{M}</span><h2>{T}</h2><p>{D}</p><b>→</b></a>')
  add('mercados/index.html','<div class="hub-grid" data-hub-grid>',f'<a href="../{P}"><span>{M}</span><h2>{T}</h2><p>{D}</p><b>→</b></a>')
  sm=Path('sitemap.xml'); ns='http://www.sitemaps.org/schemas/sitemap/0.9'; ET.register_namespace('',ns); tree=ET.parse(sm); root=tree.getroot(); u='https://gabitcoinasse.com/'+P
