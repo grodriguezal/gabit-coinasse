@@ -11,7 +11,7 @@
     .then(() => {
       const path = `${window.location.pathname.replace(/\/+$/, '')}/`;
       if (path === '/dinero/tokenizacion-activos-agentes-liquidez/') {
-        return loadScript('/gabit-audio-test.js?v=20260926-2');
+        return loadScript('/gabit-audio-mp3-test.js?v=20260927-1');
       }
       return null;
     })
