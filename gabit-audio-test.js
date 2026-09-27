@@ -55,7 +55,7 @@
   player.setAttribute('aria-label', 'Reproductor de audio del artículo');
   player.innerHTML = `
     <div class="gabit-audio__topline">
-      <span class="gabit-audio__brand">GABIT AUDIO</span>
+      <span class="gabit-audio__brand">GABIT COINASSE AUDIO</span>
       <span class="gabit-audio__duration">≈ ${estimateMinutes} MIN</span>
     </div>
     <div class="gabit-audio__main">
@@ -73,29 +73,36 @@
         <button type="button" data-audio-forward aria-label="Avanzar aproximadamente 15 segundos">+15</button>
       </div>
     </div>
-    <p class="gabit-audio__note">La voz depende de tu dispositivo. Esta versión de prueba no usa servicios externos.</p>`;
-
+    <p class="gabit-audio__note">La voz depende de tu dispositivo.</p>`;
   heroCopy.appendChild(player);
 
   const sticky = document.createElement('div');
   sticky.className = 'gabit-audio-sticky';
   sticky.hidden = true;
+  sticky.setAttribute('aria-label', 'Controles flotantes de Gabit Coinasse Audio');
   sticky.innerHTML = `
-    <span class="gabit-audio-sticky__brand">GABIT AUDIO</span>
-    <button type="button" data-audio-sticky-play aria-label="Reproducir o pausar"><span data-audio-sticky-icon>▶</span></button>
-    <div class="gabit-audio-sticky__track"><span data-audio-sticky-bar></span></div>
-    <span data-audio-sticky-percent>0%</span>
-    <button type="button" data-audio-sticky-rate aria-label="Cambiar velocidad">1×</button>`;
+    <div class="gabit-audio-sticky__head">
+      <span class="gabit-audio-sticky__brand">GABIT COINASSE AUDIO</span>
+      <span class="gabit-audio-sticky__status" data-audio-sticky-status>REPRODUCIENDO</span>
+      <span class="gabit-audio-sticky__percent" data-audio-sticky-percent>0%</span>
+    </div>
+    <div class="gabit-audio-sticky__controls">
+      <button type="button" data-audio-sticky-back aria-label="Retroceder aproximadamente 15 segundos">−15</button>
+      <button class="gabit-audio-sticky__play" type="button" data-audio-sticky-play aria-label="Reproducir o pausar"><span data-audio-sticky-icon>▶</span></button>
+      <button type="button" data-audio-sticky-forward aria-label="Avanzar aproximadamente 15 segundos">+15</button>
+      <input data-audio-sticky-progress class="gabit-audio-sticky__progress" type="range" min="0" max="1000" value="0" aria-label="Progreso del artículo">
+      <button class="gabit-audio-sticky__rate" type="button" data-audio-sticky-rate aria-label="Cambiar velocidad">1×</button>
+    </div>`;
   document.body.appendChild(sticky);
 
   const styles = document.createElement('style');
   styles.textContent = `
     .gabit-audio{margin-top:24px;border:2px solid var(--ink,#111);background:var(--paper,#f4f0e7);color:var(--ink,#111);font-family:"IBM Plex Mono",monospace}
-    .gabit-audio__topline{display:flex;justify-content:space-between;gap:12px;padding:9px 12px;border-bottom:1px solid var(--ink,#111);font-size:10px;font-weight:700;letter-spacing:.09em}
-    .gabit-audio__brand{background:var(--yellow,#ffd400);padding:3px 6px;margin:-3px 0}
+    .gabit-audio__topline{display:flex;justify-content:space-between;gap:12px;padding:9px 12px;border-bottom:1px solid var(--ink,#111);font-size:10px;font-weight:700;letter-spacing:.075em}
+    .gabit-audio__brand{background:var(--yellow,#ffd400);padding:3px 6px;margin:-3px 0;white-space:nowrap}
     .gabit-audio__main{display:grid;grid-template-columns:minmax(170px,.8fr) minmax(170px,1.5fr) auto;gap:16px;align-items:center;padding:15px 12px}
     .gabit-audio button{appearance:none;border:0;background:transparent;color:inherit;font:700 11px/1 "IBM Plex Mono",monospace;cursor:pointer;border-radius:0}
-    .gabit-audio button:focus-visible,.gabit-audio-sticky button:focus-visible,.gabit-audio__progress:focus-visible{outline:3px solid var(--yellow,#ffd400);outline-offset:3px}
+    .gabit-audio button:focus-visible,.gabit-audio-sticky button:focus-visible,.gabit-audio__progress:focus-visible,.gabit-audio-sticky__progress:focus-visible{outline:3px solid var(--yellow,#ffd400);outline-offset:3px}
     .gabit-audio__play{display:flex;align-items:center;gap:9px;text-align:left;padding:7px 0!important}
     .gabit-audio__play-icon{display:grid;place-items:center;width:31px;height:31px;flex:0 0 31px;background:var(--ink,#111);color:var(--paper,#f4f0e7);font-size:11px}
     .gabit-audio__play:hover .gabit-audio__play-icon{background:var(--yellow,#ffd400);color:var(--ink,#111)}
@@ -108,15 +115,44 @@
     .gabit-audio__controls button{min-width:39px;padding:9px 7px!important;border:1px solid var(--ink,#111)}
     .gabit-audio__controls button:hover{background:var(--yellow,#ffd400)}
     .gabit-audio__note{margin:0;padding:8px 12px;border-top:1px solid rgba(17,17,17,.2);font:500 9px/1.35 "IBM Plex Mono",monospace;letter-spacing:.02em}
-    .gabit-audio-sticky{position:fixed;z-index:1000;left:50%;bottom:14px;transform:translateX(-50%);width:min(640px,calc(100vw - 24px));display:grid;grid-template-columns:auto 38px minmax(90px,1fr) auto auto;gap:10px;align-items:center;padding:9px 10px;background:var(--ink,#111);color:var(--paper,#f4f0e7);border:1px solid var(--paper,#f4f0e7);box-shadow:0 8px 28px rgba(0,0,0,.25);font:700 9px/1 "IBM Plex Mono",monospace;letter-spacing:.04em}
+
+    .gabit-audio-sticky{position:fixed;z-index:1000;left:50%;bottom:max(12px,env(safe-area-inset-bottom));transform:translateX(-50%);width:min(720px,calc(100vw - 24px));padding:10px 11px 11px;background:var(--ink,#111);color:var(--paper,#f4f0e7);border:1px solid rgba(244,240,231,.78);box-shadow:0 10px 30px rgba(0,0,0,.28);font:700 9px/1 "IBM Plex Mono",monospace;letter-spacing:.045em}
     .gabit-audio-sticky[hidden]{display:none}
-    .gabit-audio-sticky__brand{color:var(--yellow,#ffd400);white-space:nowrap}
-    .gabit-audio-sticky button{appearance:none;border:1px solid rgba(244,240,231,.5);background:transparent;color:inherit;height:30px;min-width:34px;font:700 10px/1 "IBM Plex Mono",monospace;cursor:pointer;border-radius:0}
+    .gabit-audio-sticky__head{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;padding-bottom:8px;border-bottom:1px solid rgba(244,240,231,.18)}
+    .gabit-audio-sticky__brand{color:var(--yellow,#ffd400);white-space:nowrap;letter-spacing:.06em}
+    .gabit-audio-sticky__status{justify-self:start;color:rgba(244,240,231,.62);font-size:8px;white-space:nowrap}
+    .gabit-audio-sticky__percent{color:rgba(244,240,231,.78);font-size:9px}
+    .gabit-audio-sticky__controls{display:grid;grid-template-columns:40px 44px 40px minmax(90px,1fr) 44px;gap:7px;align-items:center;padding-top:9px}
+    .gabit-audio-sticky button{appearance:none;border:1px solid rgba(244,240,231,.38);background:transparent;color:inherit;height:36px;min-width:0;padding:0 6px;font:700 10px/1 "IBM Plex Mono",monospace;cursor:pointer;border-radius:0}
     .gabit-audio-sticky button:hover{background:var(--yellow,#ffd400);color:var(--ink,#111);border-color:var(--yellow,#ffd400)}
-    .gabit-audio-sticky__track{height:3px;background:rgba(244,240,231,.25);overflow:hidden}
-    .gabit-audio-sticky__track span{display:block;height:100%;width:0;background:var(--yellow,#ffd400)}
-    @media(max-width:760px){.gabit-audio{margin-top:20px}.gabit-audio__main{grid-template-columns:1fr auto;gap:13px}.gabit-audio__timeline{grid-column:1/-1;grid-row:2}.gabit-audio__controls{grid-column:2;grid-row:1}.gabit-audio__note{font-size:8px}.gabit-audio-sticky{grid-template-columns:auto 36px minmax(70px,1fr) auto}.gabit-audio-sticky__brand{display:none}.gabit-audio-sticky button[data-audio-sticky-rate]{display:none}}
-    @media(max-width:420px){.gabit-audio__topline{padding:8px 10px}.gabit-audio__main{padding:12px 10px;gap:10px}.gabit-audio__play{font-size:10px!important}.gabit-audio__controls button{min-width:34px;padding:8px 5px!important;font-size:10px}.gabit-audio__play-icon{width:28px;height:28px;flex-basis:28px}}
+    .gabit-audio-sticky__play{background:var(--yellow,#ffd400)!important;color:var(--ink,#111)!important;border-color:var(--yellow,#ffd400)!important;font-size:12px!important}
+    .gabit-audio-sticky__progress{width:100%;height:5px;margin:0;appearance:none;background:linear-gradient(to right,var(--yellow,#ffd400) 0,var(--yellow,#ffd400) var(--gc-audio-progress,0%),rgba(244,240,231,.2) var(--gc-audio-progress,0%),rgba(244,240,231,.2) 100%);cursor:pointer}
+    .gabit-audio-sticky__progress::-webkit-slider-thumb{appearance:none;width:13px;height:13px;background:var(--paper,#f4f0e7);border:2px solid var(--ink,#111);border-radius:0;box-shadow:0 0 0 1px var(--paper,#f4f0e7)}
+    .gabit-audio-sticky__progress::-moz-range-thumb{width:13px;height:13px;background:var(--paper,#f4f0e7);border:2px solid var(--ink,#111);border-radius:0}
+    .gabit-audio-sticky__rate{border-color:rgba(255,212,0,.65)!important;color:var(--yellow,#ffd400)!important}
+
+    @media(max-width:760px){
+      .gabit-audio{margin-top:20px}
+      .gabit-audio__main{grid-template-columns:1fr auto;gap:13px}
+      .gabit-audio__timeline{grid-column:1/-1;grid-row:2}
+      .gabit-audio__controls{grid-column:2;grid-row:1}
+      .gabit-audio__note{font-size:8px}
+      .gabit-audio-sticky{width:calc(100vw - 20px);padding:9px 10px 10px;bottom:max(10px,env(safe-area-inset-bottom))}
+      .gabit-audio-sticky__controls{grid-template-columns:38px 44px 38px minmax(80px,1fr) 42px;gap:6px}
+      .gabit-audio-sticky__head{gap:8px;padding-bottom:7px}
+    }
+    @media(max-width:420px){
+      .gabit-audio__topline{padding:8px 10px;font-size:9px}
+      .gabit-audio__main{padding:12px 10px;gap:10px}
+      .gabit-audio__play{font-size:10px!important}
+      .gabit-audio__controls button{min-width:34px;padding:8px 5px!important;font-size:10px}
+      .gabit-audio__play-icon{width:28px;height:28px;flex-basis:28px}
+      .gabit-audio-sticky{width:calc(100vw - 16px);padding:8px 8px 9px}
+      .gabit-audio-sticky__brand{font-size:8px}
+      .gabit-audio-sticky__status{font-size:7px}
+      .gabit-audio-sticky__controls{grid-template-columns:35px 42px 35px minmax(70px,1fr) 39px;gap:5px;padding-top:8px}
+      .gabit-audio-sticky button{height:34px;padding:0 4px;font-size:9px}
+    }
   `;
   document.head.appendChild(styles);
 
@@ -130,10 +166,14 @@
   const backButton = player.querySelector('[data-audio-back]');
   const forwardButton = player.querySelector('[data-audio-forward]');
   const rateButton = player.querySelector('[data-audio-rate]');
+
   const stickyPlay = sticky.querySelector('[data-audio-sticky-play]');
   const stickyIcon = sticky.querySelector('[data-audio-sticky-icon]');
-  const stickyBar = sticky.querySelector('[data-audio-sticky-bar]');
+  const stickyBack = sticky.querySelector('[data-audio-sticky-back]');
+  const stickyForward = sticky.querySelector('[data-audio-sticky-forward]');
+  const stickyProgress = sticky.querySelector('[data-audio-sticky-progress]');
   const stickyPercent = sticky.querySelector('[data-audio-sticky-percent]');
+  const stickyStatus = sticky.querySelector('[data-audio-sticky-status]');
   const stickyRate = sticky.querySelector('[data-audio-sticky-rate]');
 
   let chunkIndex = 0;
@@ -158,21 +198,33 @@
   if ('onvoiceschanged' in synth) synth.addEventListener('voiceschanged', chooseVoice, { once: false });
 
   const progressForIndex = () => Math.round((chunkIndex / sentenceChunks.length) * 1000);
+  const currentStateLabel = () => {
+    if (!hasStarted) return 'LISTO';
+    if (isPaused) return 'EN PAUSA';
+    if (isPlaying) return 'REPRODUCIENDO';
+    if (chunkIndex >= sentenceChunks.length) return 'TERMINADO';
+    return 'LISTO';
+  };
+
   const updateUi = () => {
     const raw = Math.min(1000, progressForIndex());
     const pct = Math.round(raw / 10);
     progress.value = String(raw);
+    stickyProgress.value = String(raw);
     progress.style.setProperty('--gc-audio-progress', `${pct}%`);
+    stickyProgress.style.setProperty('--gc-audio-progress', `${pct}%`);
     percent.textContent = `${pct}%`;
     stickyPercent.textContent = `${pct}%`;
-    stickyBar.style.width = `${pct}%`;
+    const stateLabel = currentStateLabel();
+    status.textContent = stateLabel;
+    stickyStatus.textContent = stateLabel;
     const rateLabel = `${rates[rateIndex]}×`;
     rateButton.textContent = rateLabel;
     stickyRate.textContent = rateLabel;
-    playIcon.textContent = isPlaying && !isPaused ? 'Ⅱ' : '▶';
-    stickyIcon.textContent = isPlaying && !isPaused ? 'Ⅱ' : '▶';
-    playLabel.textContent = hasStarted ? (isPlaying && !isPaused ? 'PAUSAR' : 'CONTINUAR') : 'ESCUCHAR ARTÍCULO';
-    status.textContent = !hasStarted ? 'LISTO' : isPaused ? 'EN PAUSA' : isPlaying ? 'REPRODUCIENDO' : chunkIndex >= sentenceChunks.length ? 'TERMINADO' : 'LISTO';
+    const playingNow = isPlaying && !isPaused;
+    playIcon.textContent = playingNow ? 'Ⅱ' : '▶';
+    stickyIcon.textContent = playingNow ? 'Ⅱ' : '▶';
+    playLabel.textContent = hasStarted ? (playingNow ? 'PAUSAR' : 'CONTINUAR') : 'ESCUCHAR ARTÍCULO';
   };
 
   const speakCurrent = (token = generation) => {
@@ -200,8 +252,9 @@
       if (token !== generation || event.error === 'canceled' || event.error === 'interrupted') return;
       isPlaying = false;
       isPaused = false;
-      status.textContent = 'NO DISPONIBLE';
       updateUi();
+      status.textContent = 'NO DISPONIBLE';
+      stickyStatus.textContent = 'NO DISPONIBLE';
     };
     synth.speak(utterance);
   };
@@ -252,22 +305,36 @@
     else updateUi();
   };
 
-  playButton.addEventListener('click', togglePlayback);
-  stickyPlay.addEventListener('click', togglePlayback);
-  backButton.addEventListener('click', () => jumpBySeconds(-15));
-  forwardButton.addEventListener('click', () => jumpBySeconds(15));
-  progress.addEventListener('input', () => {
-    const ratio = Number(progress.value) / 1000;
+  const seekFromRange = (range) => {
+    const ratio = Number(range.value) / 1000;
     chunkIndex = Math.min(sentenceChunks.length - 1, Math.floor(ratio * sentenceChunks.length));
     if (hasStarted) startFromCurrent();
     else updateUi();
-  });
+  };
 
   const cycleRate = () => {
     rateIndex = (rateIndex + 1) % rates.length;
     if (isPlaying || isPaused) startFromCurrent();
     else updateUi();
   };
+
+  playButton.addEventListener('click', togglePlayback);
+  stickyPlay.addEventListener('click', togglePlayback);
+  backButton.addEventListener('click', () => jumpBySeconds(-15));
+  forwardButton.addEventListener('click', () => jumpBySeconds(15));
+  stickyBack.addEventListener('click', () => jumpBySeconds(-15));
+  stickyForward.addEventListener('click', () => jumpBySeconds(15));
+  progress.addEventListener('change', () => seekFromRange(progress));
+  stickyProgress.addEventListener('change', () => seekFromRange(stickyProgress));
+  progress.addEventListener('input', () => {
+    const pct = Math.round(Number(progress.value) / 10);
+    progress.style.setProperty('--gc-audio-progress', `${pct}%`);
+  });
+  stickyProgress.addEventListener('input', () => {
+    const pct = Math.round(Number(stickyProgress.value) / 10);
+    stickyProgress.style.setProperty('--gc-audio-progress', `${pct}%`);
+    stickyPercent.textContent = `${pct}%`;
+  });
   rateButton.addEventListener('click', cycleRate);
   stickyRate.addEventListener('click', cycleRate);
 
