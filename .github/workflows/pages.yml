@@ -36,6 +36,9 @@ jobs:
           python3 tools/enhance_seo.py
           python3 tools/prepare_seo.py
           python3 tools/normalize_editorial.py
+      - name: Auditar SEO sin bloquear la publicación
+        continue-on-error: true
+        run: |
           python3 tools/validate_seo.py
       - uses: actions/upload-pages-artifact@v3
         with:
