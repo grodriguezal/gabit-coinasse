@@ -37,7 +37,5 @@
 .connection-map a:hover,.connection-map a:focus-visible{background:var(--yellow);outline:0}
 .connection-map span{color:#6f6b64}
 .small-detail>div>span{display:none}
-/* The home has a curated static latest module. Hide the obsolete JS feed immediately to prevent stale-content flashes during refresh. */
-.recent-feed,[data-recent-feed]{display:none!important}
 @media(max-width:900px){.territory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hub-tools--library{align-items:flex-start}}
 @media(max-width:560px){h1,h2,h3{overflow-wrap:anywhere}.connection-map>div{grid-template-columns:1fr}.territory-grid{grid-template-columns:minmax(0,1fr)}.mobile-menu{inset:72px 0 auto;max-height:calc(100dvh - 72px);overflow-y:auto}.hero-art{width:calc(100% - 8px);margin-inline:auto;transform:none}.hub-filter{flex:1 1 auto}.hub-tools--library{margin-top:-30px}.rabbit-list a{gap:12px;padding:24px 0;font-size:clamp(30px,10vw,40px);line-height:1.02}.rabbit-list small{width:fit-content;max-width:100%;white-space:normal}.rabbit-title{width:100%;overflow-wrap:break-word;word-break:normal}.rabbit-intro{margin-bottom:38px}}

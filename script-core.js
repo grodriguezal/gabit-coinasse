@@ -244,7 +244,6 @@ if (homeHero && !document.querySelector('[data-recent-feed]')) {
     });
   };
 
-  renderRecentPosts(fallbackPosts);
   fetch('/articulos/', { cache: 'no-store' })
     .then((response) => {
       if (!response.ok) throw new Error(`HTTP ${response.status}`);
@@ -265,7 +264,7 @@ if (homeHero && !document.querySelector('[data-recent-feed]')) {
         .filter((post) => post.href && post.title);
       if (posts.length) renderRecentPosts(posts);
     })
-    .catch(() => {});
+    .catch(() => renderRecentPosts(fallbackPosts));
 }
 
 // Hub search + category filters + progressive reveal.
