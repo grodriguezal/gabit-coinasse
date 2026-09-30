@@ -379,17 +379,6 @@ document.head.appendChild(googleTagScript);
 
 // Mobile colour feedback v3: reading reveals only; touch hover remains disabled.
 (() => {
-  const highlight = document.querySelector('.hero h1 > span');
-  if (!highlight || window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-  const clear = () => highlight.classList.remove('gc-hero-highlight');
-  highlight.addEventListener('animationend', clear, {once:true});
-  window.requestAnimationFrame(() => window.requestAnimationFrame(() => {
-    highlight.classList.add('gc-hero-highlight');
-  }));
-  window.setTimeout(clear, 2200);
-})();
-
-(() => {
   const touch = window.matchMedia('(hover: none) and (pointer: coarse)');
   const reduced = window.matchMedia('(prefers-reduced-motion: reduce)');
   const styles = document.createElement('style');

@@ -7,7 +7,7 @@
     document.body.appendChild(script);
   });
 
-  loadScript('/script-core.js?v=20260929-hero-highlight')
+  loadScript('/script-core.js?v=20260930-hero-hover')
     .then(() => {
       const path = `${window.location.pathname.replace(/\/+$/, '')}/`;
       if (path === '/dinero/tokenizacion-activos-agentes-liquidez/') {
