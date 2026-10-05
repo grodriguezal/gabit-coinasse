@@ -149,7 +149,7 @@ const normalizeReadingTimeText = (text = '') => text.replace(/\b(\d{1,2})\s*MIN\
 const normalizeReadingTimeLabels = () => {
   const selectors = ['.eyebrow', '.hub-grid span', '.feature-card span', '.story-list span', '.rabbit-list span', '.rabbit-list small', '.latest-grid span', '.meta'];
   document.querySelectorAll(selectors.join(',')).forEach((label) => {
-    label.textContent = normalizeReadingTimeText(label.textContent);
+    if (!label.closest('[data-reading-time]')) label.textContent = normalizeReadingTimeText(label.textContent);
   });
 };
 normalizeReadingTimeLabels();
@@ -200,6 +200,7 @@ if (homeHero && !document.querySelector('[data-recent-feed]')) {
 
   const recentList = recentSection.querySelector('[data-recent-list]');
   const fallbackPosts = [
+    {"href": "mercados/por-que-todo-cae-a-la-vez-diversificacion/", "readMinutes": "10", "meta": "MERCADOS · 10 MIN", "title": "¿POR QUÉ TODO CAE A LA VEZ SI SE SUPONE QUE HABÍAS DIVERSIFICADO?", "summary": "Tres fondos pueden repetir los mismos riesgos. Solapamiento, COVID, 2022 y lo que cambia al combinar acciones, bonos, oro y Bitcoin."},
     { href: 'dinero/como-funciona-el-dinero-moderno/', meta: 'RABBIT HOLE · DINERO · ECONOMÍA · 22 MIN', title: 'TIENES DINERO. PERO ¿QUÉ TIENES REALMENTE?', summary: 'Del oro al fiat, los bancos, Bitcoin, stablecoins e inflación. Un mapa para entender qué promesa aceptas cada vez que dices “dinero”.' },
     { href: 'mercados/tesis-inversion-plata/', meta: 'MERCADOS · DINERO · ECONOMÍA · 15 MIN', title: 'LA PLATA TIENE UN PROBLEMA: EL MUNDO LA QUIERE PARA DOS COSAS A LA VEZ', summary: 'Es activo monetario y materia prima industrial. Su mayor atractivo nace de esa doble vida. El riesgo también.' },
     { href: 'economia/quien-paga-realmente-un-arancel/', meta: 'ECONOMÍA · PODER · MERCADOS · 14 MIN', title: '¿QUIÉN PAGA REALMENTE UN ARANCEL?', summary: 'El gobierno se lo cobra al importador. La factura termina repartiéndose entre empresas, consumidores, proveedores extranjeros y productores locales.' },
@@ -221,7 +222,8 @@ if (homeHero && !document.querySelector('[data-recent-feed]')) {
       metaRow.className = 'recent-meta-row';
       const meta = document.createElement('p');
       meta.className = 'meta';
-      meta.textContent = normalizeReadingTimeText(post.meta);
+      meta.textContent = post.readMinutes ? post.meta : normalizeReadingTimeText(post.meta);
+      if (post.readMinutes) meta.dataset.readingTime = post.readMinutes;
       metaRow.appendChild(meta);
       if (index === 0) {
         const badge = document.createElement('span');
@@ -258,6 +260,7 @@ if (homeHero && !document.querySelector('[data-recent-feed]')) {
         .map((card) => ({
           href: new URL(card.getAttribute('href'), sourceBase).pathname,
           meta: card.querySelector('span')?.textContent?.trim() || '',
+          readMinutes: card.dataset.readingTime || '',
           title: card.querySelector('h2')?.textContent?.trim() || '',
           summary: card.querySelector('p')?.textContent?.trim() || '',
         }))
