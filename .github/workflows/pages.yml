@@ -27,6 +27,25 @@ jobs:
       - uses: actions/configure-pages@v5
         with:
           enablement: true
+      # El módulo Destacados es una selección editorial, no una copia de Lo último.
+      - name: Proteger separación entre Destacados y Lo último
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          import re
+
+          home = Path("index.html").read_text(encoding="utf-8")
+          archive = Path("articulos/index.html").read_text(encoding="utf-8")
+          curated = re.search(r'<section class="latest section"[^>]*data-editorial="curated"[^>]*>(.*?)</section>', home, re.S)
+          if not curated or '<h2 id="featured-title">DESTACADOS</h2>' not in curated.group(1):
+              raise SystemExit("La portada perdió su módulo editorial Destacados")
+          latest = re.search(r'<div class="hub-grid" data-hub-grid><a href="../([^"]+)"', archive)
+          if not latest:
+              raise SystemExit("No se pudo identificar el artículo más reciente del archivo")
+          if f'href="{latest.group(1)}"' in curated.group(1):
+              raise SystemExit("Destacados no debe duplicar automáticamente la publicación más reciente")
+          print("PASS: Destacados es una selección editorial distinta del último artículo")
+          PY
       - name: Auditar SEO sin bloquear la publicación
         continue-on-error: true
         run: |
