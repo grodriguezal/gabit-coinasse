@@ -188,5 +188,9 @@
   "mercados/por-que-todo-cae-a-la-vez-diversificacion/index.html": {
     "title": "¿Por qué todo cae a la vez si se supone que habías diversificado? — Gabit Coinasse",
     "description": "S&P 500, Nasdaq y Dow: tres fondos pueden repetir los mismos riesgos. COVID, 2022 y cómo distinguir diversificación de una colección de etiquetas."
+  },
+  "dinero/es-tuyo-tu-dinero-si-necesitas-permiso-para-moverlo/index.html": {
+    "title": "Autocustodia: ¿es tuyo tu dinero si necesitas permiso? — Gabit Coinasse",
+    "description": "Del oro escondido en casa a las claves privadas de Bitcoin: qué protege la autocustodia frente a bancos y bloqueos, qué riesgos traslada y cuánta libertad permite."
   }
 }
