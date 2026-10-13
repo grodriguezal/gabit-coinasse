@@ -192,5 +192,9 @@
   "dinero/es-tuyo-tu-dinero-si-necesitas-permiso-para-moverlo/index.html": {
     "title": "Autocustodia: ¿es tuyo tu dinero si necesitas permiso? — Gabit Coinasse",
     "description": "Del oro escondido en casa a las claves privadas de Bitcoin: qué protege la autocustodia frente a bancos y bloqueos, qué riesgos traslada y cuánta libertad permite."
+  },
+  "dinero/por-que-un-dolar-tiene-dos-precios/index.html": {
+    "title": "¿Por qué el dólar tiene dos precios? Oficial y paralelo — Gabit Coinasse",
+    "description": "Por qué un dólar puede costar distinto al tipo oficial y al paralelo: controles cambiarios, reservas, escasez, arbitraje y las lecciones de Venezuela y Argentina."
   }
 }
