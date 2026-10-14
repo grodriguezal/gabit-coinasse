@@ -196,5 +196,9 @@
   "dinero/por-que-un-dolar-tiene-dos-precios/index.html": {
     "title": "¿Por qué el dólar tiene dos precios? Oficial y paralelo — Gabit Coinasse",
     "description": "Por qué un dólar puede costar distinto al tipo oficial y al paralelo: controles cambiarios, reservas, escasez, arbitraje y las lecciones de Venezuela y Argentina."
+  },
+  "dinero/pueden-stablecoins-acabar-con-bancos/index.html": {
+    "title": "¿Pueden las stablecoins acabar con los bancos? — Gabit Coinasse",
+    "description": "Stablecoins, autocustodia, depósitos y GENIUS: por qué la disputa por el yield y el fracaso de CLARITY amenazan el negocio de los bancos."
   }
 }
