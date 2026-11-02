@@ -46,6 +46,18 @@ jobs:
               raise SystemExit("Destacados no debe duplicar automáticamente la publicación más reciente")
           print("PASS: Destacados es una selección editorial distinta del último artículo")
           PY
+      - name: Stop duplicated home news modules before deployment
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          home = Path("index.html").read_text(encoding="utf-8")
+          assert 'id="home-new-title"' not in home, "Duplicated Lo ultimo section found"
+          assert 'data-editorial="latest"' not in home, "Duplicated latest module"
+          assert 'id="featured-title"' in home, "Missing featured section"
+          assert 'id="company-analysis-title"' in home, "Missing company analysis"
+          assert 'class="hero editorial-carousel"' in home, "Missing main hero"
+          print("Homepage editorial checks passed")
+          PY
       - name: Auditar SEO sin bloquear la publicación
         continue-on-error: true
         run: |
