@@ -24,9 +24,9 @@ jobs:
 
           html = Path("index.html").read_text(encoding="utf-8")
           checks = {
-              'Lo último heading': len(re.findall(r'<h[1-6][^>]*>\s*LO ÚLTIMO\s*</h[1-6]>', html, re.I)) == 1,
-              'Lo último section ID': html.count('id="home-new-title"') == 1,
-              'Latest editorial section': html.count('data-editorial="latest"') == 1,
+              'No duplicate Lo último heading': len(re.findall(r'<h[1-6][^>]*>\s*LO ÚLTIMO\s*</h[1-6]>', html, re.I)) == 0,
+              'No duplicate Lo último section ID': html.count('id="home-new-title"') == 0,
+              'No duplicated latest section': html.count('data-editorial="latest"') == 0,
               'Featured section': html.count('id="featured-title"') == 1,
               'Company analysis section': html.count('id="company-analysis-title"') == 1,
               'Hero preserved': 'class="hero editorial-carousel"' in html,
