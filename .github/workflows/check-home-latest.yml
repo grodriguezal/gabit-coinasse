@@ -1,0 +1,38 @@
+name: Verify homepage editorial sections
+
+on:
+  push:
+    paths:
+      - index.html
+      - .github/workflows/check-home-latest.yml
+  pull_request:
+    paths:
+      - index.html
+      - .github/workflows/check-home-latest.yml
+  workflow_dispatch:
+
+jobs:
+  validate-home:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check single Lo ultimo and preserved curated modules
+        run: |
+          python3 - <<'PY'
+          import re
+          from pathlib import Path
+
+          html = Path("index.html").read_text(encoding="utf-8")
+          checks = {
+              'Lo último heading': len(re.findall(r'<h[1-6][^>]*>\s*LO ÚLTIMO\s*</h[1-6]>', html, re.I)) == 1,
+              'Lo último section ID': html.count('id="home-new-title"') == 2,
+              'Latest editorial section': html.count('data-editorial="latest"') == 1,
+              'Featured section': html.count('id="featured-title"') == 2,
+              'Company analysis section': html.count('id="company-analysis-title"') == 2,
+              'Hero preserved': 'class="hero editorial-carousel"' in html,
+          }
+          for name, ok in checks.items():
+              print(('OK' if ok else 'FAIL') + ': ' + name)
+          if not all(checks.values()):
+              raise SystemExit("Homepage editorial structure validation failed")
+          PY
