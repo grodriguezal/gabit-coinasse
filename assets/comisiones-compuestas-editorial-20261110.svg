@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1536" height="1024" viewBox="0 0 1536 1024" role="img" aria-labelledby="ttl desc">
+<title id="ttl">El coste invisible de las comisiones compuestas</title>
+<desc id="desc">Collage editorial crema, negro y amarillo: dos trayectorias parten de 10.000 euros y después de treinta años terminan en 76.123 euros sin costes y 48.373 euros con una comisión anual del 1,5 por ciento. La brecha es 27.750 euros.</desc>
+<defs><pattern id="grain" width="31" height="29" patternUnits="userSpaceOnUse"><path d="M2 3h1M11 17h2M25 6h1M20 25h2M7 23h1" stroke="#111" stroke-width=".7" opacity=".16"/></pattern><pattern id="paper" width="88" height="81" patternUnits="userSpaceOnUse"><path d="M0 14H88M0 51H88" stroke="#111" opacity=".025"/><path d="M23 2v77M65 1v80" stroke="#111" opacity=".025"/></pattern><pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(-38)"><path d="M0 0V8" stroke="#111" stroke-width="2" opacity=".22"/></pattern><filter id="rough"><feTurbulence type="fractalNoise" baseFrequency=".015" numOctaves="2" result="n"/><feDisplacementMap in="SourceGraphic" in2="n" scale="4"/></filter></defs>
+<rect width="1536" height="1024" fill="#F4F0E7"/><rect width="1536" height="1024" fill="url(#grain)"/><rect width="1536" height="1024" fill="url(#paper)"/>
+<path d="M55 73h1426M55 966h1426" stroke="#111" stroke-width="4"/>
+<text x="58" y="57" fill="#111" font-family="Arial Narrow,Impact,Arial,sans-serif" font-size="42" font-weight="900" letter-spacing="-2">GABIT COINASSE</text><text x="1474" y="56" text-anchor="end" font-family="monospace" font-size="22" font-weight="700">MERCADOS  /  DINERO</text>
+<text x="65" y="175" font-family="Arial Narrow,Impact,Arial,sans-serif" font-size="78" letter-spacing="-3" font-weight="900">LA COMISIÓN PARECE PEQUEÑA.</text>
+<path d="M50 199L1083 194L1085 313L56 320Z" fill="#FFD400" filter="url(#rough)"/>
+<text x="68" y="283" font-family="Arial Narrow,Impact,Arial,sans-serif" font-size="87" font-weight="900" letter-spacing="-3">EL AGUJERO NO.</text>
+<text x="69" y="349" font-family="monospace" font-size="20" font-weight="700">10.000 € INICIALES  ·  7 % BRUTO ANUAL  ·  30 AÑOS</text>
+<path d="M70 411L1020 411M70 411V833" stroke="#111" stroke-width="3"/>
+<path d="M70 411h955M70 517h955M70 622h955M70 727h955M70 833h955" stroke="#111" opacity=".12" stroke-width="2" stroke-dasharray="7 8"/>
+<text x="74" y="887" font-family="monospace" font-size="20">AÑO 0</text><text x="905" y="887" font-family="monospace" font-size="20">AÑO 30</text>
+<path d="M77 807 C296 800 391 760 521 683 S786 499 1010 443" stroke="#111" stroke-width="12" fill="none" stroke-linecap="round"/>
+<path d="M77 807 C294 800 441 771 560 727 S817 639 1010 615" stroke="#D93A2F" stroke-width="10" fill="none" stroke-linecap="round" stroke-dasharray="18 14"/>
+<path d="M1017 445L1071 435M1017 613L1071 613" stroke="#111" stroke-width="2"/>
+<rect x="1035" y="375" width="430" height="132" fill="#111"/><text x="1060" y="416" font-family="monospace" font-size="22" fill="#F4F0E7">SIN COSTES</text><text x="1060" y="475" font-family="Arial Narrow,Impact,Arial,sans-serif" font-size="61" font-weight="900" fill="#F4F0E7">76.123 €</text>
+<rect x="1035" y="555" width="430" height="138" fill="#D93A2F"/><text x="1060" y="597" font-family="monospace" font-size="22" fill="#fff">CON UN 1,5 % ANUAL</text><text x="1060" y="658" font-family="Arial Narrow,Impact,Arial,sans-serif" font-size="61" font-weight="900" fill="#fff">48.373 €</text>
+<path d="M1246 703l-12 59m-22-27 26 30 27-32" fill="none" stroke="#D93A2F" stroke-width="8"/>
+<path d="M1031 786h427v137h-427z" fill="#FFD400" stroke="#111" stroke-width="3"/>
+<text x="1057" y="830" font-size="21" font-family="monospace" font-weight="700">PATRIMONIO QUE NO LLEGA</text>
+<text x="1054" y="899" font-family="Arial Narrow,Impact,Arial,sans-serif" font-size="62" font-weight="900" letter-spacing="-2">−27.750 €</text>
+<path d="M71 932h922" stroke="#111" stroke-width="2"/><text x="72" y="959" font-family="monospace" font-size="18">UNA COMISIÓN HOY = MENOS CAPITAL Y MENOS GANANCIAS MAÑANA</text>
+<text x="1465" y="988" text-anchor="end" font-family="monospace" font-size="16">ESCENARIO HIPOTÉTICO · SIN IMPUESTOS NI INFLACIÓN</text>
+</svg>
