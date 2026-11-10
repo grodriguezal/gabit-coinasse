@@ -43,3 +43,11 @@
 .small-detail>div>span{display:none}
 @media(max-width:900px){.territory-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.hub-tools--library{align-items:flex-start}}
 @media(max-width:560px){h1,h2,h3{overflow-wrap:anywhere}.connection-map>div{grid-template-columns:1fr}.territory-grid{grid-template-columns:minmax(0,1fr)}.mobile-menu{inset:72px 0 auto;max-height:calc(100dvh - 72px);overflow-y:auto}.hero-art{width:calc(100% - 8px);margin-inline:auto;transform:none}.hub-filter{flex:1 1 auto}.hub-tools--library{margin-top:-30px}.rabbit-list a{gap:12px;padding:24px 0;font-size:clamp(30px,10vw,40px);line-height:1.02}.rabbit-list small{width:fit-content;max-width:100%;white-space:normal}.rabbit-title{width:100%;overflow-wrap:break-word;word-break:normal}.rabbit-intro{margin-bottom:38px}}
+
+/* Análisis de empresas: listado editorial a la izquierda, destacado a la derecha. */
+#analisis-empresas .company-analysis-layout{grid-template-columns:minmax(0,.85fr) minmax(0,1.15fr);align-items:start}
+#analisis-empresas .company-analysis-layout>.feature-card{grid-column:2;grid-row:1}
+#analisis-empresas .company-analysis-layout>.story-list{grid-column:1;grid-row:1}
+#analisis-empresas .company-more-link{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:25px 5px 8px 0;font:700 19px "Archivo Narrow",sans-serif;text-decoration:underline;text-underline-offset:5px}
+#analisis-empresas .company-more-link:hover,#analisis-empresas .company-more-link:focus-visible{background:var(--yellow);outline:2px solid var(--ink);outline-offset:3px}
+@media(max-width:900px){#analisis-empresas .company-analysis-layout{grid-template-columns:minmax(0,1fr)}#analisis-empresas .company-analysis-layout>.feature-card{grid-column:1;grid-row:1}#analisis-empresas .company-analysis-layout>.story-list{grid-column:1;grid-row:2}}
