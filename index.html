@@ -122,24 +122,24 @@ window.addEventListener('pageshow',e=>{if(e.persisted)frame=requestAnimationFram
     .then(function(markup){
       const parsed=new DOMParser().parseFromString(markup,'text/html');
       const ordered=[...parsed.querySelectorAll('#company-analysis-grid > a[data-published]')]
-        .filter(a=>/^\\d{4}-\\d{2}-\\d{2}$/.test(a.dataset.published||''))
+        .filter(a=>/^\d{4}-\d{2}-\d{2}$/.test(a.dataset.published||''))
         .sort((a,b)=>b.dataset.published.localeCompare(a.dataset.published));
       if(ordered.length<4)return;
       const newest=ordered[0];
       const relativeHref=newest.getAttribute('href')||'';
-      if(!/^\\.\\.\\/mercados\\/[a-z0-9-]+\\/$/.test(relativeHref))return;
-      const newestUrl=relativeHref.replace(/^\\.\\.\\//,'');
+      if(!/^\.\.\/mercados\/[a-z0-9-]+\/$/.test(relativeHref))return;
+      const newestUrl=relativeHref.replace(/^\.\.\//,'');
       const fragment=document.createDocumentFragment();
       ordered.slice(1,4).forEach(function(a){
         const href=a.getAttribute('href')||'';
-        if(!/^\\.\\.\\/mercados\\/[a-z0-9-]+\\/$/.test(href))return;
+        if(!/^\.\.\/mercados\/[a-z0-9-]+\/$/.test(href))return;
         const title=(a.querySelector('h2')?.textContent||'').trim();
         const meta=(a.querySelector('span')?.textContent||'').trim();
         if(!title||!meta)return;
         const item=document.createElement('article');
         const tag=document.createElement('p');tag.className='meta';tag.textContent=meta;
         const heading=document.createElement('h3');heading.textContent=title;
-        const link=document.createElement('a');link.href=href.replace(/^\\.\\.\\//,'');link.setAttribute('aria-label','Leer: '+title);link.textContent='→';
+        const link=document.createElement('a');link.href=href.replace(/^\.\.\//,'');link.setAttribute('aria-label','Leer: '+title);link.textContent='→';
         item.append(tag,heading,link);fragment.append(item);
       });
       if(fragment.childElementCount!==3)return;
@@ -153,7 +153,7 @@ window.addEventListener('pageshow',e=>{if(e.persisted)frame=requestAnimationFram
         const title=(newest.querySelector('h2')?.textContent||'').trim();
         const meta=(newest.querySelector('span')?.textContent||'').trim();
         const src=image?.getAttribute('src')||'';
-        if(!title||!meta||!/^\\.\\.\\/\\.\\.\\/assets\\/[a-zA-Z0-9._-]+\\.(?:webp|png|jpg|jpeg)$/.test(src))return;
+        if(!title||!meta||!/^\.\.\/\.\.\/assets\/[a-zA-Z0-9._-]+\.(?:webp|png|jpg|jpeg)$/.test(src))return;
         const featureImg=feature.querySelector('img');
         const featureTitle=feature.querySelector('.feature-title-link');
         const featureLink=feature.querySelector('.feature-link');
@@ -161,7 +161,7 @@ window.addEventListener('pageshow',e=>{if(e.persisted)frame=requestAnimationFram
         const featureDesc=feature.querySelector('div > p:not(.meta)');
         const more=list.querySelector('.company-more-link');
         if(!featureImg||!featureTitle||!featureLink||!featureMeta||!featureDesc||!more)return;
-        const nextImage=src.replace(/^\\.\\.\\/\\.\\.\\//,'');
+        const nextImage=src.replace(/^\.\.\/\.\.\//,'');
         featureImg.src=nextImage;
         featureImg.alt=image.getAttribute('alt')||'Collage editorial del análisis de '+title;
         featureTitle.href=newestUrl;featureTitle.textContent=title;
