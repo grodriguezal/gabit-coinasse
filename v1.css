@@ -51,3 +51,23 @@
 #analisis-empresas .company-more-link{display:flex;align-items:center;justify-content:space-between;gap:16px;padding:25px 5px 8px 0;font:700 19px "Archivo Narrow",sans-serif;text-decoration:underline;text-underline-offset:5px}
 #analisis-empresas .company-more-link:hover,#analisis-empresas .company-more-link:focus-visible{background:var(--yellow);outline:2px solid var(--ink);outline-offset:3px}
 @media(max-width:900px){#analisis-empresas .company-analysis-layout{grid-template-columns:minmax(0,1fr)}#analisis-empresas .company-analysis-layout>.feature-card{grid-column:1;grid-row:1}#analisis-empresas .company-analysis-layout>.story-list{grid-column:1;grid-row:2}}
+
+/* Portada · Lo último, solo artículos generales; independiente de Análisis de empresas */
+#lo-ultimo{padding-top:clamp(50px,6vw,94px);padding-bottom:clamp(45px,5vw,80px)}
+#lo-ultimo .section-kicker{font:700 13px "IBM Plex Mono",monospace;letter-spacing:.02em}
+#lo-ultimo .editorial-recent-heading{display:flex;justify-content:space-between;align-items:end;gap:26px;margin:15px 0 28px}
+#lo-ultimo .editorial-recent-heading h2{font:700 clamp(68px,9vw,132px)/.87 "Archivo Narrow",sans-serif;letter-spacing:-.035em;margin:0 0 16px}
+#lo-ultimo .editorial-recent-heading p{font-size:clamp(17px,1.45vw,23px);line-height:1.45;max-width:800px;margin:0}
+#lo-ultimo .editorial-recent-heading>a{font:700 18px "Archivo Narrow",sans-serif;white-space:nowrap;text-decoration:underline;text-underline-offset:4px;margin-bottom:5px}
+#lo-ultimo .editorial-recent-list{list-style:none;padding:0;margin:0;border-top:2px solid var(--ink)}
+#lo-ultimo .editorial-recent-item{border-bottom:1px solid var(--ink)}
+#lo-ultimo .editorial-recent-item>a{display:grid;grid-template-columns:85px minmax(0,1fr) 58px;gap:20px;align-items:start;padding:32px 22px;text-decoration:none;color:inherit;transition:background-color .15s}
+#lo-ultimo .editorial-recent-item:first-child>a{background:var(--yellow)}
+#lo-ultimo .editorial-recent-item>a:hover,#lo-ultimo .editorial-recent-item>a:focus-visible{background:var(--yellow);outline:0}
+#lo-ultimo .editorial-recent-number{font:700 14px "IBM Plex Mono",monospace;padding-top:9px}
+#lo-ultimo .editorial-recent-body .meta{font:700 13px/1.55 "IBM Plex Mono",monospace;margin:0 0 15px}
+#lo-ultimo .editorial-recent-body h3{font:700 clamp(31px,3.5vw,62px)/.97 "Archivo Narrow",sans-serif;letter-spacing:-.02em;max-width:1200px;margin:0}
+#lo-ultimo .editorial-recent-summary{margin:16px 0 0;font-size:clamp(15px,1.2vw,21px);line-height:1.4;max-width:1000px}
+#lo-ultimo .editorial-recent-arrow{font-size:30px;align-self:center;text-align:right}
+#lo-ultimo .editorial-recent-badge{display:inline-block;background:var(--ink);color:var(--paper);padding:2px 8px;font-size:11px}
+@media(max-width:800px){#lo-ultimo .editorial-recent-heading{display:block}#lo-ultimo .editorial-recent-heading>a{display:inline-block;margin-top:20px}#lo-ultimo .editorial-recent-item>a{grid-template-columns:32px minmax(0,1fr) 25px;gap:10px;padding:24px 7px}#lo-ultimo .editorial-recent-number{font-size:11px}#lo-ultimo .editorial-recent-body .meta{font-size:10px}#lo-ultimo .editorial-recent-body h3{font-size:clamp(27px,6vw,43px)}#lo-ultimo .editorial-recent-arrow{font-size:23px}}
