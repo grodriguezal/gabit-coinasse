@@ -245,5 +245,9 @@
   "mercados/liquidez-hoy-fed-m2-bolsa-oro-bitcoin/index.html": {
     "title": "¿Se está secando la liquidez? Fed, bolsa, oro y Bitcoin — Gabit Coinasse",
     "description": "Qué es la liquidez y qué ocurre en noviembre de 2026: Fed, M2, reservas, Tesoro, tipos y un gráfico interactivo con bolsa, oro y Bitcoin."
+  },
+  "mercados/anthropic-ipo-valoracion-claude-ia/index.html": {
+    "title": "¿Anthropic está cara tras su OPV? Negocio y valoración — Gabit Coinasse",
+    "description": "Anthropic tras su OPV: Claude, ingresos, costes de computación, pérdidas, dilución, control de los fundadores y tres escenarios de valoración hasta 2031."
   }
 }
