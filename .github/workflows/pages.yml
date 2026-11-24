@@ -62,6 +62,19 @@ jobs:
         continue-on-error: true
         run: |
           python3 tools/validate_seo.py
+      - name: Verificar artículo de liquidez antes de publicar
+        run: |
+          python3 - <<'PY'
+          from pathlib import Path
+          home = Path("index.html").read_text(encoding="utf-8")
+          page = Path("mercados/liquidez-hoy-fed-m2-bolsa-oro-bitcoin/index.html")
+          artwork = Path("assets/liquidez-mercados-fed-tga-20261124.webp")
+          assert page.is_file(), "Falta el artículo en la entrega de Pages"
+          assert artwork.is_file() and artwork.stat().st_size > 10000, "Falta la imagen de liquidez"
+          assert 'mercados/liquidez-hoy-fed-m2-bolsa-oro-bitcoin/' in home, "La home no enlaza al artículo"
+          assert 'id="liquidez-lineas"' in page.read_text(encoding="utf-8"), "Falta el gráfico"
+          print("PASS: página, portada e imagen presentes para GitHub Pages")
+          PY
       - uses: actions/upload-pages-artifact@v3
         with:
           path: .
